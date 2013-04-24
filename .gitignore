@@ -2,3 +2,9 @@
 .classpath
 .project
 .settings/
+forum-app/.classpath
+forum-app-test/.classpath
+forum-app/bin/*
+forum-app-test/bin/*
+forum-app/.project
+forum-app-test/.project
