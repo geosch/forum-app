@@ -7,12 +7,14 @@
     <uses-sdk
         android:minSdkVersion="9"
         android:targetSdkVersion="17" />
+    <instrumentation android:targetPackage="com.example.forum_app" android:name="android.test.InstrumentationTestRunner"></instrumentation>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+         <uses-library android:name="android.test.runner" />
         <activity
             android:name="com.example.forum_app.MainActivity"
             android:label="@string/app_name" >
