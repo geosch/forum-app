@@ -1,85 +1,79 @@
 package com.example.forum_app;
 
-import com.example.forum_app.R;
-
-import android.os.Bundle;
 import android.app.Activity;
-import android.util.Log;
-import android.view.Menu;
+import android.app.ExpandableListActivity;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+ 
+import java.util.ArrayList;
 
-public class MainActivity extends Activity implements OnClickListener{
 
-	private Button button1;
-	private Button button2;
-	private Button button3;
-	
-	private ProgressBar progressBar1;
-
-	private EditText editText1;
-	
-	private String button_pressed;
-	
-    private String show_text_to_user;
-	
+import com.example.forum_app.R.array;
+ 
+public class MainActivity extends Activity {
+    private ExpandableListView mExpandableList;
+ 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Resources res = getResources();
+
+        ListView listview = (ListView) findViewById(R.id.listView1);
+        String[] values = new String[] { "Mobile", "Application", "für",
+            "Slany"};
+
+        final ArrayList<String> list = new ArrayList<String>();
+        for (int i = 0; i < values.length; ++i) {
+          list.add(values[i]);
+        }
+       
         
         
-		this.button1 = (Button) this.findViewById(R.id.button1);
-		this.button2 = (Button) this.findViewById(R.id.button2);
-		this.button3 = (Button) this.findViewById(R.id.button3);
-		
-		this.editText1 = (EditText) this.findViewById(R.id.editText1);
-		
-		this.progressBar1 = (ProgressBar) this.findViewById(R.id.progressBar1);
-		
-		this.button1.setOnClickListener(this);
-		this.button2.setOnClickListener(this);
-		this.button3.setOnClickListener(this);
-		
-    }
+        ListAdapter adapter = new ArrayAdapter<String>(this.getApplicationContext(), android.R.layout.simple_list_item_1, list);
+      /*  {
+        	@Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view =super.getView(position, convertView, parent);
 
+                TextView textView=(TextView) view.findViewById(android.R.id.text1);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    
-    @Override
-	public void onClick(View v) {
+                //YOUR CHOICE OF COLOR
+                textView.setTextColor(Color.BLACK);
 
-		Button clicked = (Button) v;
-
-		String nextCipherFromUser = (String) clicked.getText();
-
-		Log.d("TAG", "Button: " + clicked.getText() + ", clicked!");
-
-		if (nextCipherFromUser.equals("Button1")) {
-			Log.d("TAG", "Button1");
-			
-			this.button_pressed = "First Button";
-			this.editText1.setText(this.button_pressed);
-		}
-		else if (nextCipherFromUser.equals("Button2")) {
-			Log.d("TAG", "Button2");
-			
-			this.button_pressed = "Second Button";
-			this.editText1.setText(this.button_pressed);
-		}
-		else if (nextCipherFromUser.equals("Button3")) {
-			Log.d("TAG", "Button3");
-			
-			this.button_pressed = "Third Button";
-			this.editText1.setText(this.button_pressed);
-		}
+                return view;
+            }
+        };*/
+        listview.setAdapter(adapter);
+        
+        mExpandableList = (ExpandableListView)findViewById(R.id.expandable_list);
+ 
+        ArrayList<Parent> arrayParents = new ArrayList<Parent>();
+        ArrayList<String> arrayChildren = new ArrayList<String>();
+ 
+        Parent parent = new Parent();
+        parent.setTitle(res.getString(R.string.categories));
+             
+        String[] childs = res.getStringArray(R.array.expandableListView1);
+            arrayChildren = new ArrayList<String>();
+            for (int j = 0; j < 5; j++) {
+                arrayChildren.add(childs[j]);
+            }
+            parent.setArrayChildren(arrayChildren);
+ 
+            //in this array we add the Parent object. We will use the arrayParents at the setAdapter
+            arrayParents.add(parent);
+        
+ 
+        //sets the adapter that provides data to the list.
+        mExpandableList.setAdapter(new MyCustomAdapter(MainActivity.this,arrayParents));
     }
 }
