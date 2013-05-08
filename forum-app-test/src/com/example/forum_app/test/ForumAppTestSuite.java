@@ -4,8 +4,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 
+
 @RunWith(Suite.class)
-@SuiteClasses({})
+@SuiteClasses({SomeTest.class, SomeOtherTest.class})
 public class ForumAppTestSuite {
 
 }
