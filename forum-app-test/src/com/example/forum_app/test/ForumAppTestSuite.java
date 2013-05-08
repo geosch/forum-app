@@ -5,7 +5,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 
 @RunWith(Suite.class)
-@SuiteClasses({})
+@SuiteClasses({SomeTest.class, DBConnectionTest.class})
 public class ForumAppTestSuite {
-
+	
 }
