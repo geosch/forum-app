@@ -7,7 +7,10 @@
     <uses-sdk
         android:minSdkVersion="9"
         android:targetSdkVersion="17" />
-
+	
+	<!--  Internet Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -23,5 +26,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
