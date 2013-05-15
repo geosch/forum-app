@@ -109,18 +109,8 @@ public class MainActivity extends Activity {
      */
     public List<JSONObject> sendQuery(String query){
     	
-    	// JSON parser class
-	    JSONParser jsonParser = new JSONParser();
-	    
-	    String url = "http://forumapp.heliohost.org/DBConnectionService.php";
-		
-		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("query", query));
-		
-		// getting product details by making HTTP request
-        List<JSONObject> json = jsonParser.makeHttpRequest(
-                url, "POST", params);
-        
-    	return json;
+    	DBOperator dboperator = DBOperator.getInstance();
+    	return dboperator.sendQuery(query);
+    	
     }
 }
