@@ -1,22 +1,14 @@
 package com.example.forum_app;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
-import android.app.ExpandableListActivity;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
- 
-import java.util.ArrayList;
-
-
-import com.example.forum_app.R.array;
  
 public class MainActivity extends Activity {
     private ExpandableListView mExpandableList;
@@ -38,20 +30,9 @@ public class MainActivity extends Activity {
        
         
         
-        ListAdapter adapter = new ArrayAdapter<String>(this.getApplicationContext(), android.R.layout.simple_list_item_1, list);
-      /*  {
-        	@Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view =super.getView(position, convertView, parent);
-
-                TextView textView=(TextView) view.findViewById(android.R.id.text1);
-
-                //YOUR CHOICE OF COLOR
-                textView.setTextColor(Color.BLACK);
-
-                return view;
-            }
-        };*/
+        ListAdapter adapter = new ArrayAdapter<String>(this.getApplicationContext(), 
+        					R.layout.list_view, list); //pass own xml file to adapter instead of simple_list_xxx
+        
         listview.setAdapter(adapter);
         
         mExpandableList = (ExpandableListView)findViewById(R.id.expandable_list);
