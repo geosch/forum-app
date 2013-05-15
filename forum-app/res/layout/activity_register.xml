@@ -51,6 +51,7 @@
         android:layout_alignRight="@+id/etEmail"
         android:layout_below="@+id/btRegister"
         android:layout_marginTop="25dp"
+        android:gravity="center"
         android:textColor="@color/red"
         android:textIsSelectable="true" />
 
