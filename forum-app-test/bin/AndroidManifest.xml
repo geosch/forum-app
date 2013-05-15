@@ -9,7 +9,10 @@
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
         android:targetPackage="com.example.forum_app" />
-
+	
+    <!--  Internet Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
