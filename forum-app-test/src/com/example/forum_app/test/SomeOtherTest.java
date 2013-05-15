@@ -41,6 +41,7 @@ public class SomeOtherTest extends ActivityInstrumentationTestCase2<MainActivity
     }
 	
 
+
     public void testLoginButton() throws Throwable {
 	solo.waitForActivity("MainActivity");
     solo.clickOnButton("Login");

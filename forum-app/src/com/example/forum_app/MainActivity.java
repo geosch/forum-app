@@ -1,17 +1,26 @@
 package com.example.forum_app;
 
+
 import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 public class MainActivity extends Activity {
 	private ExpandableListView mExpandableList;
@@ -24,13 +33,20 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		Resources res = getResources();
 
+
 		mExpandableList = (ExpandableListView) findViewById(R.id.expandable_list);
+
+	
 
 		ArrayList<Parent> arrayParents = new ArrayList<Parent>();
 		ArrayList<String> arrayChildren = new ArrayList<String>();
 
+
 		Parent parent = new Parent();
 		parent.setTitle(res.getString(R.string.categories));
+
+
+
 
 		String[] childs = res.getStringArray(R.array.expandableListView1);
 
@@ -69,4 +85,33 @@ public class MainActivity extends Activity {
 	    });
 	
 		}
+	
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    /**
+     * sendQuery
+     * @param query holds string with full SQL query
+     * @return is a list where every item equals one row from query answer
+     */
+    public List<JSONObject> sendQuery(String query){
+    	
+    	// JSON parser class
+	    JSONParser jsonParser = new JSONParser();
+	    
+	    String url = "http://forumapp.heliohost.org/DBConnectionService.php";
+		
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("query", query));
+		
+		// getting product details by making HTTP request
+        List<JSONObject> json = jsonParser.makeHttpRequest(
+                url, "POST", params);
+        
+    	return json;
+    }
 }
