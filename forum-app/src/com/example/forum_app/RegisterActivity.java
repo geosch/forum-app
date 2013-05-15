@@ -8,12 +8,14 @@ import android.content.Intent;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.View;
-//import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-//import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
 
 public class RegisterActivity extends Activity {
 	
@@ -21,12 +23,13 @@ public class RegisterActivity extends Activity {
 	private EditText etNickname;
 	private EditText etPassword;
 	private EditText etPasswordConfirm;
-	private EditText etCountry;
+	private Spinner spCountry;
 	private EditText etEmail;
 	private Spinner spGender;
 	private TextView tvRegisterError; 
 	
 	private Pattern regexp_pattern;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +42,29 @@ public class RegisterActivity extends Activity {
 		this.etNickname = (EditText) this.findViewById(com.example.forum_app.R.id.etNickname);
 		this.etPassword = (EditText) this.findViewById(com.example.forum_app.R.id.etPassword);
 		this.etPasswordConfirm = (EditText) this.findViewById(com.example.forum_app.R.id.etPasswordConfirm);
-		this.etCountry = (EditText) this.findViewById(com.example.forum_app.R.id.etCountry);
+		this.spCountry = (Spinner) this.findViewById(com.example.forum_app.R.id.spCountry);
 		this.etEmail = (EditText) this.findViewById(com.example.forum_app.R.id.etEmail);
 		this.spGender = (Spinner) this.findViewById(com.example.forum_app.R.id.spGender); 
+		
+		Locale[] locales = Locale.getAvailableLocales();
+		String[] countries = new String[locales.length];
+		Set<String> strings = new HashSet<String>();
+
+		for (int i = 0; i < countries.length; i++)
+		{
+			String country = locales[i].getDisplayCountry(new Locale(this.getString(R.string.country_language),this.getString( R.string.country_language_state))).trim();
+			if (!country.isEmpty())
+			{
+				strings.add(country);
+			}
+		}
+		
+		countries = strings.toArray(new String[0]);
+		java.util.Arrays.sort(countries);
+		
+		ArrayAdapter<String> country_adapter = new ArrayAdapter<String>(this,
+		            android.R.layout.simple_spinner_item, countries);
+		spCountry.setAdapter(country_adapter);
 		
 		this.regexp_pattern = Patterns.EMAIL_ADDRESS;
 	}
@@ -70,10 +93,6 @@ public class RegisterActivity extends Activity {
 		else if(!this.etPassword.getText().toString().equals(this.etPasswordConfirm.getText().toString()))
 		{
 			this.tvRegisterError.setText(R.string.err_unequal_passwords);
-		}
-		else if(this.etCountry.getText().toString().trim().isEmpty())
-		{
-			this.tvRegisterError.setText(R.string.err_missing_country);
 		}
 		else if(this.etEmail.getText().toString().trim().isEmpty())
 		{

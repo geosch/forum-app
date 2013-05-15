@@ -6,9 +6,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="nickname">Nickname</string>
-    <string name="country">Country</string>
     <string name="email">Email</string>
     <string name="gender_prompt">Choose a Gender</string>
+    <string name="country_prompt">Choose a Country</string>
+    <string name="country_language">ENGLISH</string>
+    <string name="country_language_state">US</string>
     <string name="password">Password</string>
     <string name="passwordconfirm">Confirm Password</string>
     <string-array name="gender">

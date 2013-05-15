@@ -16,9 +16,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="46dp"
         android:ems="10"
+        android:hint="@string/nickname"
         android:inputType="text"
-        android:text=""
-        android:hint="@string/nickname" >
+        android:text="" >
 
         <requestFocus />
     </EditText>
@@ -30,8 +30,8 @@
         android:layout_alignLeft="@+id/etNickname"
         android:layout_below="@+id/etNickname"
         android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/password" />
+        android:hint="@string/password"
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/etPasswordConfirm"
@@ -40,49 +40,9 @@
         android:layout_alignLeft="@+id/etPassword"
         android:layout_below="@+id/etPassword"
         android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/passwordconfirm" />
-
-    <EditText
-        android:id="@+id/etCountry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etPasswordConfirm"
-        android:layout_below="@+id/etPasswordConfirm"
-        android:ems="10"
-        android:inputType="text"
-        android:text=""
-        android:hint="@string/country" />
-
-    <Spinner
-        android:id="@+id/spGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etCountry"
-        android:layout_below="@+id/etCountry"
-        android:entries="@array/gender"
-        android:prompt="@string/gender_prompt" />
-
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spGender"
-        android:layout_below="@+id/spGender"
-        android:ems="10" 
-        android:text=""
-        android:inputType="textEmailAddress"
-        android:hint="@string/email"/>
-
-    <Button
-        android:id="@+id/btRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etEmail"
-        android:layout_centerHorizontal="true"
-        android:onClick="clickRegister"
-        android:text="@string/register" />
-
+        android:hint="@string/passwordconfirm"
+        android:inputType="textPassword" />
+    
     <TextView
         android:id="@+id/tvRegisterError"
         android:layout_width="wrap_content"
@@ -93,5 +53,42 @@
         android:layout_marginTop="25dp"
         android:textColor="@color/red"
         android:textIsSelectable="true" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spCountry"
+        android:layout_below="@+id/spGender"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+
+    <Spinner
+        android:id="@+id/spGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spCountry"
+        android:layout_below="@+id/spCountry"
+        android:entries="@array/gender"
+        android:prompt="@string/gender_prompt" />
+
+    <Spinner
+        android:id="@+id/spCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etPasswordConfirm"
+        android:layout_below="@+id/etPasswordConfirm"
+        
+        android:prompt="@string/country_prompt" />
+
+    <Button
+        android:id="@+id/btRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etEmail"
+        android:layout_centerHorizontal="true"
+        android:onClick="clickRegister"
+        android:text="@string/register" />
 
 </RelativeLayout>
