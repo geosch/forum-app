@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 
 @RunWith(Suite.class)
-@SuiteClasses({SomeTest.class, SomeOtherTest.class})
+@SuiteClasses({SomeTest.class, SomeOtherTest.class, RegistryCheckInputTest.class})
 public class ForumAppTestSuite {
 
 }
