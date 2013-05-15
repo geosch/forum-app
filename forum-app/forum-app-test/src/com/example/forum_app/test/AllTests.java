@@ -1,6 +1,5 @@
 package com.example.forum_app.test;
 
-import com.example.forum_app.*;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
