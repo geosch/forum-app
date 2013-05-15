@@ -6,6 +6,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -14,7 +20,6 @@ import android.util.Log;
 import android.view.Menu;
 
 public class MainActivity extends Activity {
-	private HttpURLConnection  conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,29 +37,25 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Method creates a jdbc connection to a 
-     * postgresql database
-     * @return connection if true otherwise null
+     * sendQuery
+     * @param query holds string with full SQL query
+     * @return is a list where every item equals one row from query answer
      */
-	public HttpURLConnection createDatabaseConnection() {
-		URL url;
-		try {
-			url = new URL("http://thomaskohl.bplaced.net/tttct/getAllUser.php");
-			this.conn = (HttpURLConnection) url.openConnection();
-			
-			
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			Log.d("DBConnection", "ERROR MalformedURLException " + e.getMessage());
-		}
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			Log.d("DBConnection", "ERROR IOException " + e.getMessage());
-		}
-
-    	return conn;
-	}
+    public List<JSONObject> sendQuery(String query){
+    	
+    	// JSON parser class
+	    JSONParser jsonParser = new JSONParser();
+	    
+	    String url = "http://forumapp.heliohost.org/DBConnectionService.php";
+		
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("query", query));
+		
+		// getting product details by making HTTP request
+        List<JSONObject> json = jsonParser.makeHttpRequest(
+                url, "POST", params);
+        
+    	return json;
+    }
     
 }

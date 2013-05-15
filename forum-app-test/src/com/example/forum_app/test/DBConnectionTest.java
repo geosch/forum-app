@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONTokener;
 import com.example.forum_app.*;
 
+import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.JsonWriter;
 import android.util.Log;
@@ -35,6 +36,13 @@ public class DBConnectionTest extends ActivityInstrumentationTestCase2<MainActiv
     	mActivity = this.getActivity();
     }
     
+    /**
+     * testDbConnection
+     * Method tests a connection to the php service
+     * which returns an List which represents the rows
+     * of the answer.
+     * @throws Throwable
+     */
 	public void testDbConnection() throws Throwable {
 	    
 		// JSON parser class
@@ -46,13 +54,30 @@ public class DBConnectionTest extends ActivityInstrumentationTestCase2<MainActiv
 		
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("query", query));
+		
 		// getting product details by making HTTP request
         List<JSONObject> json = jsonParser.makeHttpRequest(
                 url, "POST", params);
+        
         Log.d("DBConnection", "Json output:");
         Log.d("DBConnection", json.toString());
 		
 		Assert.assertEquals(json.get(0).getInt("userid"), 1); 
+	}
+	
+	/**
+     * testSendQuery
+     * Method tests if the method which send query 
+     * to the service works.
+     * @throws Throwable
+     */
+	public void testSendQuery() throws Throwable {
+	    
+		String query = "Select * from forumuser";
+		//List<JSONObject> json = sendQuery(query);
+		Activity activity = getActivity();
+		List<JSONObject> json = ((MainActivity) activity).sendQuery(query);
+		Assert.assertEquals(json.get(0).getInt("userid"), 1);
 	}
 
 }
