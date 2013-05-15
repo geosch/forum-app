@@ -84,6 +84,15 @@ public class MainActivity extends Activity {
 	        }
 	    });
 	
+		final Intent register_intent = new Intent(this, RegisterActivity.class);
+		
+		register.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) 
+	        {   
+	            startActivity(register_intent);
+	            finish();
+	        }
+	    });
 		}
 	
     @Override
