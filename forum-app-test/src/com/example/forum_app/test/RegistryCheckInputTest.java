@@ -20,7 +20,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 	private EditText etNickname;
 	private EditText etPassword;
 	private EditText etPasswordConfirm;
-	private EditText etCountry;
+	private Spinner spCountry;
 	private EditText etEmail;
 	private Spinner spGender;
 	private TextView tvRegisterError; 
@@ -50,7 +50,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 		this.etNickname = (EditText) this.ractivity.findViewById(com.example.forum_app.R.id.etNickname);
 		this.etPassword = (EditText) this.ractivity.findViewById(com.example.forum_app.R.id.etPassword);
 		this.etPasswordConfirm = (EditText) this.ractivity.findViewById(com.example.forum_app.R.id.etPasswordConfirm);
-		this.etCountry = (EditText) this.ractivity.findViewById(com.example.forum_app.R.id.etCountry);
+		this.spCountry = (Spinner) this.ractivity.findViewById(com.example.forum_app.R.id.spCountry);
 		this.etEmail = (EditText) this.ractivity.findViewById(com.example.forum_app.R.id.etEmail);
 		this.spGender = (Spinner) this.ractivity.findViewById(com.example.forum_app.R.id.spGender); 
 		this.res = ractivity.getResources();
@@ -63,7 +63,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				etNickname.setText("");
 				etPassword.setText("Horst123");
 				etPasswordConfirm.setText("Horst123");
-				etCountry.setText("Austria");
+				spCountry.setSelection(0);
 				spGender.setSelection(0);
 				etEmail.setText("Host@Horsti.at");
 				
@@ -89,7 +89,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				etNickname.setText("Horst");
 				etPassword.setText("");
 				etPasswordConfirm.setText("Horst123");
-				etCountry.setText("Austria");
+				spCountry.setSelection(0);
 				spGender.setSelection(0);
 				etEmail.setText("Host@Horsti.at");
 				btRegister.performClick();
@@ -114,7 +114,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				etNickname.setText("Horst");
 				etPassword.setText("Horst123");
 				etPasswordConfirm.setText("");
-				etCountry.setText("Austria");
+				spCountry.setSelection(0);
 				spGender.setSelection(0);
 				etEmail.setText("Host@Horsti.at");
 				
@@ -137,7 +137,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				etNickname.setText("Horst");
 				etPassword.setText("");
 				etPasswordConfirm.setText("");
-				etCountry.setText("Austria");
+				spCountry.setSelection(0);
 				spGender.setSelection(0);
 				etEmail.setText("Host@Horsti.at");
 				
@@ -161,7 +161,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				etNickname.setText("Horst");
 				etPassword.setText("Pass");
 				etPasswordConfirm.setText("Pass");
-				etCountry.setText("Austria");
+				spCountry.setSelection(0);
 				spGender.setSelection(0);
 				etEmail.setText("Host@Horsti.at");
 				btRegister.performClick();
@@ -197,7 +197,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				etNickname.setText("Horst");
 				etPassword.setText("Horst123");
 				etPasswordConfirm.setText("Horst321");
-				etCountry.setText("Austria");
+				spCountry.setSelection(0);
 				spGender.setSelection(0);
 				etEmail.setText("Host@Horsti.at");
 				
@@ -214,37 +214,13 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 	}
 	
 	@UiThreadTest
-	public void testCountryMandatory() throws Throwable {
-		this.ractivity.runOnUiThread(new Runnable() {
-			public void run() {
-				etNickname.setText("Horst");
-				etPassword.setText("Horst123");
-				etPasswordConfirm.setText("Horst123");
-				etCountry.setText("");
-				spGender.setSelection(0);
-				etEmail.setText("Host@Horsti.at");
-				
-				btRegister.performClick();
-				String error_message =  tvRegisterError.getText().toString();
-				Assert.assertEquals(error_message, res.getString(com.example.forum_app.R.string.err_missing_country));
-				
-				etCountry.setText("Austria");
-				btRegister.performClick();
-				error_message =  tvRegisterError.getText().toString();
-				Assert.assertEquals(error_message, "");
-		    }
-		});
-		
-	}
-	
-	@UiThreadTest
 	public void testEmailMandatory() throws Throwable {
 		this.ractivity.runOnUiThread(new Runnable() {
 			public void run() {
 				etNickname.setText("Horst");
 				etPassword.setText("Horst123");
 				etPasswordConfirm.setText("Horst123");
-				etCountry.setText("Austria");
+				spCountry.setSelection(0);
 				spGender.setSelection(0);
 				etEmail.setText("");
 				
@@ -267,7 +243,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				etNickname.setText("Horst");
 				etPassword.setText("Horst123");
 				etPasswordConfirm.setText("Horst123");
-				etCountry.setText("Austria");
+				spCountry.setSelection(0);
 				spGender.setSelection(0);
 				etEmail.setText("test");
 				btRegister.performClick();
