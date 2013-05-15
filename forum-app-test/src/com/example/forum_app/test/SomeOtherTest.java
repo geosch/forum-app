@@ -44,12 +44,12 @@ public class SomeOtherTest extends ActivityInstrumentationTestCase2<MainActivity
     	
     
 
-    String text = (String)textField.getText();
+    //String text = (String)textField.getText();
        	
     	
     	
-    Assert.assertEquals("FirstButton", text);
-    
+    //Assert.assertEquals("FirstButton", text);
+    Assert.assertTrue(false);
     
     
     
