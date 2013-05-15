@@ -49,5 +49,6 @@
 	 <string name="categories">Categories</string>
 	 <string name="top_bar">Catroid Forum</string>
 	 <string name="login">Login</string>
+	 <string name="register">Registration</string>
 
 </resources>
