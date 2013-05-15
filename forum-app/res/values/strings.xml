@@ -4,6 +4,8 @@
     <string name="app_name">forum-app</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    
+    
     <string name="title_activity_register">RegisterActivity</string>
     <string name="nickname">Nickname</string>
     <string name="email">Email</string>
@@ -33,6 +35,20 @@
     <string name="registration_complete_message">Contragulation! Your registration was successful.</string>
     <string name="ok">OK</string>
     
-    
-    
+	 
+	 <string-array name="expandableListView1">
+	        <item>Apparel</item>
+	        <item>Beauty</item>
+	        <item>Electronics</item>
+	        <item>Grocery</item>
+	        <item>Home Improvement</item>
+	        <item>Jewelry</item>
+	        <item>Pharmacy</item>
+	    </string-array>
+	 <string name="new_posts">newest Posts</string>
+	 <string name="categories">Categories</string>
+	 <string name="top_bar">Catroid Forum</string>
+	 <string name="login">Login</string>
+	 <string name="register">Registration</string>
+
 </resources>
