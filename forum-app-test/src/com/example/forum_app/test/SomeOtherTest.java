@@ -1,56 +1,53 @@
 package com.example.forum_app.test;
 
-import com.example.forum_app.*;
-
 import junit.framework.Assert;
+import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
-//import android.test.AndroidTestCase;
+import android.test.UiThreadTest;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+
+import com.example.forum_app.LoginActivity;
+import com.example.forum_app.MainActivity;
+import com.jayway.android.robotium.solo.Solo;
+//import android.test.AndroidTestCase;
 
 //public class SomeOtherTest extends AndroidTestCase{
 
 public class SomeOtherTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
+	protected static final int TIME_OUT = 5000;
 	private MainActivity mActivity;
-	private Button button1;
-	private EditText textField;
+	private Activity lActivity;
+	private Button login;
 	
-    @SuppressWarnings("deprecation")
+	private Solo solo;
+	
+    
 	public SomeOtherTest() {
-        super("com.example.forum_app", MainActivity.class);
+        super(MainActivity.class);
         
         
     }	
     @Override
     protected void setUp() throws Exception{     
+    	solo = new Solo(getInstrumentation(), getActivity());
+    	
+    }
     
-    	mActivity = this.getActivity();
-    	button1 = (Button) mActivity.findViewById(com.example.forum_app.R.id.button1);
+    @Override
+    protected void tearDown() {
+    	//mActivity.finish();
+    	solo.finishOpenedActivities();
     }
 	
-	
-    public void testSomeOtherThing() throws Throwable {
-    	mActivity.runOnUiThread(new Runnable() {
-        	
-    		@Override
-    		public void run(){
-        		button1.requestFocus();
-        		button1.performClick();
-        		textField = (EditText) mActivity.findViewById(com.example.forum_app.R.id.editText1); 
-        	}    		
-    	});
-    	
-    
 
-    String text = (String)textField.getText();
-       	
-    	
-    	
-    Assert.assertEquals("FirstButton", text);
-    
-    
+    public void testLoginButton() throws Throwable {
+	solo.waitForActivity("MainActivity");
+    solo.clickOnButton("Login");
+    solo.waitForActivity("LoginActivity");
+    Assert.assertNotNull(solo.getCurrentActivity());
+    Assert.assertEquals(LoginActivity.class, solo.getCurrentActivity().getClass());
+   
     
     
     }
