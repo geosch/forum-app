@@ -1,0 +1,99 @@
+<ScrollView
+     xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      >
+
+ <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      >
+
+    <EditText
+        android:id="@+id/etNickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:ems="10"
+        android:hint="@string/nickname"
+        android:inputType="text"
+        android:text="" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etNickname"
+        android:layout_below="@+id/etNickname"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/etPasswordConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etPassword"
+        android:layout_below="@+id/etPassword"
+        android:ems="10"
+        android:hint="@string/passwordconfirm"
+        android:inputType="textPassword" />
+    
+    <TextView
+        android:id="@+id/tvRegisterError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etEmail"
+        android:layout_alignRight="@+id/etEmail"
+        android:layout_below="@+id/btRegister"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:textColor="@color/red"
+        android:textIsSelectable="true" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spCountry"
+        android:layout_below="@+id/spGender"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+
+    <Spinner
+        android:id="@+id/spGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spCountry"
+        android:layout_below="@+id/spCountry"
+        android:entries="@array/gender"
+        android:prompt="@string/gender_prompt" />
+
+    <Spinner
+        android:id="@+id/spCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etPasswordConfirm"
+        android:layout_below="@+id/etPasswordConfirm"
+        
+        android:prompt="@string/country_prompt" />
+
+    <Button
+        android:id="@+id/btRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etEmail"
+        android:layout_centerHorizontal="true"
+        android:onClick="clickRegister"
+        android:text="@string/register" />
+
+</RelativeLayout>
+
+</ScrollView>
+
