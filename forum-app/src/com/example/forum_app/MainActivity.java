@@ -4,28 +4,28 @@ package com.example.forum_app;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 
 public class MainActivity extends Activity {
 	private ExpandableListView mExpandableList;
 	private Button login;
 	private Button register;
+	private int userid = 0;
+	private static final int REGISTER_ACTIVITY = 1;
+	private static final int LOGIN_ACTIVITY = 2;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -80,7 +80,6 @@ public class MainActivity extends Activity {
 			public void onClick(View v) 
 	        {   
 	            startActivity(login_intent);      
-	            finish();
 	        }
 	    });
 		
@@ -89,8 +88,7 @@ public class MainActivity extends Activity {
 		register.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) 
 	        {   
-	            startActivity(register_intent);      
-	            finish();
+	            startActivityForResult(register_intent, 1);      
 	        }
 	    });
 	
@@ -114,4 +112,18 @@ public class MainActivity extends Activity {
     	return dboperator.sendQuery(query);
     	
     }
+    
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    	  if (requestCode == REGISTER_ACTIVITY) {
+
+    	     if(resultCode == RESULT_OK){      
+    	         this.userid = data.getIntExtra("userid", 0);
+    	         Log.d("Deb: ", "Returned from Register Activity with uID: " + userid);
+    	     }
+    	     if (resultCode == RESULT_CANCELED) {    
+    	         //Write your code if there's no result
+    	     }
+    	  }
+    	}//onActivityResult
 }

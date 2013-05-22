@@ -46,8 +46,9 @@ public class SomeOtherTest extends ActivityInstrumentationTestCase2<MainActivity
 	solo.waitForActivity("MainActivity");
     solo.clickOnButton("Login");
     solo.waitForActivity("LoginActivity");
-    Assert.assertNotNull(solo.getCurrentActivity());
-    Assert.assertEquals(LoginActivity.class, solo.getCurrentActivity().getClass());
+    Activity current = solo.getCurrentActivity();
+    Assert.assertNotNull(current);
+    Assert.assertEquals(LoginActivity.class, current.getClass());
    
     
     

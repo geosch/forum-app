@@ -32,7 +32,7 @@ public class RegisterActivity extends Activity {
 	private EditText etEmail;
 	private Spinner spGender;
 	private TextView tvRegisterError; 
-	
+	private int userid;
 	private Pattern regexp_pattern;
 	
 	
@@ -115,7 +115,7 @@ public class RegisterActivity extends Activity {
 					                      "'" + this.etPassword.getText().toString().trim() + "', " +
 					                      "'" + this.spCountry.getSelectedItem().toString().trim() + "', " +
 					                      "'" + this.spGender.getSelectedItem().toString().trim() + "', " +
-					                      "'" + this.etEmail.getText().toString().trim() + "');";
+					                      "'" + this.etEmail.getText().toString().trim() + "') RETURNING userid;";
 			DBOperator dboperator = DBOperator.getInstance();
 			List<JSONObject> answer = dboperator.sendInsert(insert_user);
 			try {
@@ -134,31 +134,40 @@ public class RegisterActivity extends Activity {
 							Log.d("DBErr", answer.get(0).getString("message"));
 						}
 					}
-					Log.d("Deb: ", insert_user);
-					Log.d("Deb: ", answer.toString());
+					else if(answer.get(0).getInt("success") == 1)
+					{
+						Log.d("Deb: ", insert_user);
+						Log.d("Deb: ", answer.toString());
+						this.userid = answer.get(0).getInt("userid");
+						AlertDialog.Builder builder = new AlertDialog.Builder(this);
+						
+						builder.setMessage(R.string.registration_complete_message)
+						       .setTitle(R.string.registration_complete_title);
+				
+						builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+						           public void onClick(DialogInterface dialog, int id) {
+						        	   Intent returnIntent = new Intent();
+						        	   returnIntent.putExtra("userid",userid);
+						        	   setResult(RESULT_OK, returnIntent);     
+						        	   finish();
+						           }
+						       });
+						AlertDialog dialog = builder.create();
+						dialog.show();
+						
+					}
+					
 				}
 				else
 				{
-					Log.d("Deb: ", "Anser==null");
+					Log.d("Deb: ", "Answer = null");
 				}
 			} catch(Exception e) {
 				Log.d("Deb: ", e.getMessage());
 				Log.d("Deb: ", answer.toString());
 			}
 			
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	
-			builder.setMessage(R.string.registration_complete_message)
-			       .setTitle(R.string.registration_complete_title);
-	
-			builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-			           public void onClick(DialogInterface dialog, int id) {
-			        	   Intent switch_to_main = new Intent(RegisterActivity.this, MainActivity.class);
-			        	   startActivity(switch_to_main);
-			           }
-			       });
-			AlertDialog dialog = builder.create();
-			dialog.show();
+			
 			
 		}
 	}
