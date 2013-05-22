@@ -48,7 +48,7 @@ public class JSONParser {
             	connect.setRequestMethod("POST");
             	
             	connect.setRequestProperty("Content-Length", Integer.toString(params.get(0).getName().length() + params.get(0).getValue().length() + 2));
-            	
+            	connect.setDoOutput(true);
             	DataOutputStream wr = new DataOutputStream(connect.getOutputStream());
             	wr.writeBytes("&" + params.get(0).getName() + "=" + params.get(0).getValue());
             	wr.flush();

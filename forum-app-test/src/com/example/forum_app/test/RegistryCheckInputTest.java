@@ -1,6 +1,10 @@
 package com.example.forum_app.test;
  
 
+import java.util.List;
+
+import org.json.JSONObject;
+
 import com.example.forum_app.*;
 //import org.junit.Test;
 import junit.framework.Assert;
@@ -56,6 +60,12 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 		this.res = ractivity.getResources();
 	} // end of setUp() method definition
 	
+	private void deleteUser(String username)
+	{
+		DBOperator dboperator = DBOperator.getInstance();
+		dboperator.sendDelete("DELETE FROM ForumUser WHERE NickName = '" + username + "';");
+	}
+	
 	@UiThreadTest
 	public void testNicknameMandatory() throws Throwable {
 		this.ractivity.runOnUiThread(new Runnable() {
@@ -78,6 +88,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				btRegister.performClick();
 				error_message =  tvRegisterError.getText().toString();
 				Assert.assertEquals(error_message, "");
+				deleteUser(etNickname.getText().toString());
 		    }
 		});
 	}
@@ -103,6 +114,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				btRegister.performClick();
 				error_message =  tvRegisterError.getText().toString();
 				Assert.assertEquals(error_message, "");
+				deleteUser(etNickname.getText().toString());
 		    }
 		});
 	}
@@ -126,6 +138,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				btRegister.performClick();
 				error_message =  tvRegisterError.getText().toString();
 				Assert.assertEquals(error_message, "");
+				deleteUser(etNickname.getText().toString());
 		    }
 		});
 	}
@@ -150,6 +163,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				btRegister.performClick();
 				error_message =  tvRegisterError.getText().toString();
 				Assert.assertEquals(error_message, "");
+				deleteUser(etNickname.getText().toString());
 		    }
 		});
 	}
@@ -186,6 +200,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				btRegister.performClick();
 				error_message =  tvRegisterError.getText().toString();
 				Assert.assertEquals(error_message, "");
+				deleteUser(etNickname.getText().toString());
 		    }
 		});
 	}
@@ -209,6 +224,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				btRegister.performClick();
 				error_message =  tvRegisterError.getText().toString();
 				Assert.assertEquals(error_message, "");
+				deleteUser(etNickname.getText().toString());
 		    }
 		});
 	}
@@ -232,6 +248,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				btRegister.performClick();
 				error_message =  tvRegisterError.getText().toString();
 				Assert.assertEquals(error_message, "");
+				deleteUser(etNickname.getText().toString());
 		    }
 		});
 	}
@@ -269,6 +286,7 @@ public class RegistryCheckInputTest extends ActivityInstrumentationTestCase2<Reg
 				btRegister.performClick();
 				error_message =  tvRegisterError.getText().toString();
 				Assert.assertEquals(error_message, "");
+				deleteUser(etNickname.getText().toString());
 		    }
 		});
 	}

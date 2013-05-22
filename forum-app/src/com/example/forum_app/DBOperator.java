@@ -39,7 +39,7 @@ public class DBOperator {
 	private List<JSONObject> jsonHttpRequest(String statement, String type)
 	{
 		params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("query", statement));
+		params.add(new BasicNameValuePair(type, statement));
 		
 		Runnable runnable = new Runnable(){
 

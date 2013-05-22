@@ -1,10 +1,19 @@
 package com.example.forum_app;
 
-import android.os.Bundle;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.regex.Pattern;
+
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.View;
@@ -12,10 +21,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import java.util.regex.Pattern;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
 
 public class RegisterActivity extends Activity {
 	
@@ -104,6 +109,43 @@ public class RegisterActivity extends Activity {
 		}
 		else
 		{
+			String insert_user = "INSERT INTO ForumUser(NickName, Password, Country, Gender, Email) " +
+					             "VALUES (" + 
+					                      "'" + this.etNickname.getText().toString().trim() + "', " + 
+					                      "'" + this.etPassword.getText().toString().trim() + "', " +
+					                      "'" + this.spCountry.getSelectedItem().toString().trim() + "', " +
+					                      "'" + this.spGender.getSelectedItem().toString().trim() + "', " +
+					                      "'" + this.etEmail.getText().toString().trim() + "');";
+			DBOperator dboperator = DBOperator.getInstance();
+			List<JSONObject> answer = dboperator.sendInsert(insert_user);
+			try {
+							
+				if(answer != null)
+				{
+					if(answer.get(0).getInt("success") == 0)
+					{
+						if(answer.get(0).getInt("error_code") == -1)
+						{
+							Log.d("Deb: ", getString(R.string.err_duplicate_entry));
+							this.tvRegisterError.setText(R.string.err_duplicate_entry);
+						}
+						else
+						{
+							Log.d("DBErr", answer.get(0).getString("message"));
+						}
+					}
+					Log.d("Deb: ", insert_user);
+					Log.d("Deb: ", answer.toString());
+				}
+				else
+				{
+					Log.d("Deb: ", "Anser==null");
+				}
+			} catch(Exception e) {
+				Log.d("Deb: ", e.getMessage());
+				Log.d("Deb: ", answer.toString());
+			}
+			
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 	
 			builder.setMessage(R.string.registration_complete_message)

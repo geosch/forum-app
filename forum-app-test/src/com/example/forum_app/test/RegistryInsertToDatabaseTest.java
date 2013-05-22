@@ -1,9 +1,15 @@
 package com.example.forum_app.test;
 
+import java.util.List;
+
 import junit.framework.Assert;
+
+import org.json.JSONObject;
+
 import android.content.res.Resources;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.UiThreadTest;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -83,7 +89,7 @@ public class RegistryInsertToDatabaseTest extends ActivityInstrumentationTestCas
 				etEmail.setText("TestuserRegistration222@TestuserRegistration.at");
 				
 				btRegister.performClick();
-				Assert.assertEquals("Nickname or Email already in use", tvRegisterError.toString());
+				Assert.assertEquals(res.getString(com.example.forum_app.R.string.err_duplicate_entry), tvRegisterError.getText().toString());
 				
 		    }
 		});
@@ -116,10 +122,17 @@ public class RegistryInsertToDatabaseTest extends ActivityInstrumentationTestCas
 				Resources res = ractivity.getResources();
 
 				DBOperator dboperator = DBOperator.getInstance();
-				dboperator.sendDelete("DELET FROM ForumUser WHERE NickName = 'TestuserRegistration';");
-				
-				btRegister.performClick();
-				Assert.assertEquals("", tvRegisterError.getText().toString());
+				List<JSONObject> answer = dboperator.sendDelete("DELETE FROM ForumUser WHERE NickName = 'TestuserRegistration';");
+				Log.d("Deb: ", answer.toString());
+				int success = 0;
+				try {
+					success = answer.get(0).getInt("success");
+				}
+				catch (Exception e)
+				{
+					Log.d("Deb: ", e.getMessage());
+				}
+				Assert.assertEquals(1, success);
 				
 		    }
 		});
