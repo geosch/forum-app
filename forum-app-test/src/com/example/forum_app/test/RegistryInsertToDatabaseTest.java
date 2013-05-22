@@ -1,10 +1,6 @@
 package com.example.forum_app.test;
 
-import static org.junit.Assert.*;
 import junit.framework.Assert;
-
-import org.junit.Test;
-
 import android.content.res.Resources;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.UiThreadTest;
@@ -13,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.forum_app.DBOperator;
 import com.example.forum_app.RegisterActivity;
 
 public class RegistryInsertToDatabaseTest extends ActivityInstrumentationTestCase2<RegisterActivity>{
@@ -53,23 +50,78 @@ public class RegistryInsertToDatabaseTest extends ActivityInstrumentationTestCas
 	}
 	
 	@UiThreadTest
-	public void testRegistryDatabaseOperations() throws Throwable {
+	public void testASucessfullRegistration() throws Throwable {
 		this.ractivity.runOnUiThread(new Runnable() {
 			public void run() {
 				Resources res = ractivity.getResources();
 
-				etNickname.setText("Horst");
+				etNickname.setText("TestuserRegistration");
 				etPassword.setText("Horst123");
 				etPasswordConfirm.setText("Horst123");
 				spCountry.setSelection(0);
 				spGender.setSelection(0);
-				etEmail.setText("Horst@Horsti.at");
+				etEmail.setText("TestuserRegistration@TestuserRegistration.at");
 				
 				btRegister.performClick();
-				Assert.assertEquals(1, 1);
+				Assert.assertEquals("", tvRegisterError.getText().toString());
 				
 		    }
 		});
 	}
+	
+	@UiThreadTest
+	public void testBDuplicateNickname() throws Throwable {
+		this.ractivity.runOnUiThread(new Runnable() {
+			public void run() {
+				Resources res = ractivity.getResources();
 
+				etNickname.setText("TestuserRegistration");
+				etPassword.setText("Horst1234");
+				etPasswordConfirm.setText("Horst1234");
+				spCountry.setSelection(0);
+				spGender.setSelection(0);
+				etEmail.setText("TestuserRegistration222@TestuserRegistration.at");
+				
+				btRegister.performClick();
+				Assert.assertEquals("Nickname or Email already in use", tvRegisterError.toString());
+				
+		    }
+		});
+	}
+	
+	@UiThreadTest
+	public void testCDuplicateEmail() throws Throwable {
+		this.ractivity.runOnUiThread(new Runnable() {
+			public void run() {
+				Resources res = ractivity.getResources();
+
+				etNickname.setText("TestuserRegistration222");
+				etPassword.setText("Horst123");
+				etPasswordConfirm.setText("Horst123");
+				spCountry.setSelection(0);
+				spGender.setSelection(0);
+				etEmail.setText("TestuserRegistration@TestuserRegistration.at");
+				
+				btRegister.performClick();
+				Assert.assertEquals("Nickname or Email already in use", tvRegisterError.getText().toString());
+				
+		    }
+		});
+	}
+	
+	@UiThreadTest
+	public void testDReset() throws Throwable {
+		this.ractivity.runOnUiThread(new Runnable() {
+			public void run() {
+				Resources res = ractivity.getResources();
+
+				DBOperator dboperator = DBOperator.getInstance();
+				dboperator.sendDelete("DELET FROM ForumUser WHERE NickName = 'TestuserRegistration';");
+				
+				btRegister.performClick();
+				Assert.assertEquals("", tvRegisterError.getText().toString());
+				
+		    }
+		});
+	}
 }
