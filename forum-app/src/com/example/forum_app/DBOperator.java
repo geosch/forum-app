@@ -16,8 +16,15 @@ public class DBOperator {
 	
 	private static DBOperator instance = null;
 	
+	private JSONParser jsonParser;
+	
+	private List<NameValuePair> params;
+	
+	private List<JSONObject> json;
+	
 	private DBOperator() {
 		url = "http://forumapp.heliohost.org/DBConnectionService.php";
+		jsonParser = new JSONParser();
 	}
 	
 	public static DBOperator getInstance() {
@@ -31,15 +38,21 @@ public class DBOperator {
     
 	private List<JSONObject> jsonHttpRequest(String statement, String type)
 	{
-		// JSON parser class
-		JSONParser jsonParser = new JSONParser();
-	    
-		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("query", statement));
 		
-		// getting product details by making HTTP request
-        List<JSONObject> json = jsonParser.makeHttpRequest(
-                url, "POST", params);
+		Runnable runnable = new Runnable(){
+
+			@Override
+			public void run() {
+				json = jsonParser.makeHttpRequest(url, "POST", params);
+				
+			}
+			
+		};
+		Thread thread = new Thread(runnable);
+		thread.start();
+		while(thread.isAlive());
         
     	return json;
 	}
