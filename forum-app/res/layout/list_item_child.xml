@@ -9,12 +9,17 @@
         android:gravity="center_vertical">
  
  
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/list_item_text_child"
-              android:textSize="20sp"
-              android:padding="10dp"
-              android:layout_marginLeft="5dp"/>
+  <TextView 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/list_item_text_child"
+    android:padding="10dp"
+    android:textSize="14sp"
+    android:textColor="#000000"
+   	android:textIsSelectable="false"
+    android:layout_marginLeft="5dp"
+  />
+    
  
  
 </LinearLayout>

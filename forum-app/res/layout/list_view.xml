@@ -5,8 +5,9 @@
    android:layout_height="fill_parent"
    android:layout_gravity="center_horizontal"
    android:padding="10dp"   
-   android:textSize="16sp"
+   android:textSize="14sp"
    android:textColor="#000000"
+
    android:textIsSelectable="true"
    android:cacheColorHint="#00000000"
    android:drawSelectorOnTop="true"
