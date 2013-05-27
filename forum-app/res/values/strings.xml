@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">forum-app</string>
+    <string name="app_name">Forum-app</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    
-    
     <string name="title_activity_register">RegisterActivity</string>
     <string name="nickname">Nickname</string>
     <string name="email">Email</string>
@@ -19,7 +15,6 @@
         <item>male</item>
         <item>female</item>
     </string-array>
-    <string name="register">register</string>
     <color name="red">#FF0000</color>
     <string name="err_missing_nickname">Please enter Nickname</string>
     <string name="err_missing_password">Please enter Password</string>
@@ -30,25 +25,12 @@
     <string name="err_too_short_passwords">Password too short (min. 6 characters)</string>
     <string name="err_unequal_passwords">Repeat your Password</string>
     <string name="err_invalid_email">Your Email is invalid (example@ex.com)</string>
-    
     <string name="registration_complete_title">Registration complete</string>
     <string name="registration_complete_message">Contragulation! Your registration was successful.</string>
     <string name="ok">OK</string>
-    
-	 
-	 <string-array name="expandableListView1">
-	        <item>Apparel</item>
-	        <item>Beauty</item>
-	        <item>Electronics</item>
-	        <item>Grocery</item>
-	        <item>Home Improvement</item>
-	        <item>Jewelry</item>
-	        <item>Pharmacy</item>
-	    </string-array>
-	 <string name="new_posts">Newest Posts</string>
-	 <string name="categories">Categories</string>
-	 
-	 <string name="top_bar">Catroid Forum</string>
-	 <string name="login">Login</string>
-
+	<string name="new_posts">Newest Posts</string>
+ 	<string name="categories">Categories</string>
+    <string name="register">Register</string>
+	<string name="top_bar">Catroid Forum</string>
+	<string name="login">Login</string>
 </resources>
