@@ -4,13 +4,10 @@ package com.example.forum_app;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -18,15 +15,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OnChildClickListener{
 	final static int NUMBER_NEWEST_POSTS = 2;
 	
 	private ExpandableListView list_newest_posts;
@@ -41,7 +39,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		Resources res = getResources();
 
-		
+		Log.d("MainActivity", "OnCreate started");
 		
 		list_newest_posts = (ExpandableListView) findViewById(R.id.list_newest_posts);
 	
@@ -62,22 +60,7 @@ public class MainActivity extends Activity {
 		for (int i = 0; i < NUMBER_NEWEST_POSTS; i++) {
 			try {
 				TextView child = new TextView(getApplicationContext());
-				child.setText(table_newest_posts.get(i).getString("subject"));
-				
-				child.setOnClickListener(new OnClickListener() {
-		            @Override
-					public void onClick(View v) {
-
-//						AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-//						builder.setMessage("asdasd").setTitle("asdasfasf");
-//			           
-//						AlertDialog dialog = builder.create();
-//						dialog.show();
-						finish();
-
-					}
-				});
-				
+				child.setText(table_newest_posts.get(i).getString("subject"));		
 				arrayChildren.add(child);
 			} catch (JSONException e) {
 				Log.d("JSON Fail", "Zugriff auf neueste Posts fehlgeschlagen!");
@@ -85,16 +68,19 @@ public class MainActivity extends Activity {
 			}
 		}
 		parent.setArrayChildren(arrayChildren);
-
 		arrayParents.add(parent);
-		list_newest_posts.setAdapter(new MyCustomAdapter(MainActivity.this,
-				arrayParents));
+		
+		MyCustomAdapter adapter = new MyCustomAdapter(MainActivity.this, arrayParents);
+		list_newest_posts.setAdapter(adapter);
+		list_newest_posts.setOnChildClickListener(this);
 		
 		// the next line is there so the list starts expanded: 
 		list_newest_posts.expandGroup(0);
 		
 		
 
+		
+		
 
 		list_categories = (ListView) findViewById(R.id.list_categories);
 		
@@ -111,13 +97,25 @@ public class MainActivity extends Activity {
 				e.printStackTrace();
 			}
 		}
+
 		
-
-		list_categories.setAdapter(new ArrayAdapter<String>(this
-				.getApplicationContext(), R.layout.list_view, list));
+		list_categories.setAdapter(new ArrayAdapter<String>(getApplicationContext(),
+									R.layout.list_view, list));
 		
+		list_categories.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				Log.d("MainActivity", "Categories OnItemClickListener Fired!");
+				
+			}
+		});
 
 
+		
+		
+		
+		
 		
 		login = (Button) findViewById(R.id.login);
 		register = (Button) findViewById(R.id.register);
@@ -128,6 +126,7 @@ public class MainActivity extends Activity {
 		login.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) 
 	        {   
+				Log.d("MainActivity", "Login OnClickListener Fired");
 	            startActivity(login_intent);      
 	            finish();
 	        }
@@ -138,6 +137,7 @@ public class MainActivity extends Activity {
 		register.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) 
 	        {   
+				Log.d("MainActivity", "Regist erOnClickListener Fired");
 	            startActivity(register_intent);      
 	            finish();
 	        }
@@ -163,4 +163,19 @@ public class MainActivity extends Activity {
     	return dboperator.sendQuery(query);
     	
     }
+
+	@Override
+	public boolean onChildClick(ExpandableListView parent, View v,
+			int groupPosition, int childPosition, long id) {
+			
+		//TODO: Start the Activity with the new Thread here!
+		Log.d("MainActivity", "Newest Posts OnChildClickListener Fired");
+		return false; // set to true (95% sure ;))
+	}
+
+	/*@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		//TODO: Start the Activity with the new Thread here!
+		Log.d("MainActivity", "Categories OnChildClickListener Fired");
+	}*/
 }

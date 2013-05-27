@@ -4,7 +4,10 @@
   android:orientation="horizontal"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  android:id="@+id/list_item">
+  android:id="@+id/list_item"
+  android:clickable="false"
+  android:focusable="false"
+  android:focusableInTouchMode="false">
  
   <TextView
     android:layout_width="0dp"
@@ -15,6 +18,10 @@
 	android:padding="10dp"
 	android:layout_weight="1"
 	android:layout_marginLeft="35dp" 
+    android:clickable="false"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:textIsSelectable="false"
   />
 
  
