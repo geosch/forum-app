@@ -8,9 +8,73 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ThreadsActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+  <LinearLayout 
+    android:id="@+id/main_lin_layout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">    
+    
+    <TextView 
+      android:id="@+id/new_threads"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"               
+      android:text="@string/new_threads"
+      android:textSize="18sp"
+      android:layout_gravity="center_horizontal"
+      android:textColor="#000000"
+    />    
+    
+  </LinearLayout>
+    
+    
+    
+  <LinearLayout 
+    android:layout_below="@+id/main_lin_layout1"
+    android:layout_above="@+id/main_lin_layout2"
+    android:id="@+id/main_lin_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+  
 
+    
+    
+    <ListView
+      android:id="@+id/list_new_threads"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:listSelector="@android:color/transparent"
+      android:textColor="#000000">
+
+    </ListView>
+    
+    
+  </LinearLayout>
+    
+    
+    
+    
+    
+  <LinearLayout 
+           android:id="@+id/main_lin_layout2"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:background="@android:drawable/bottom_bar"
+           android:gravity="center">
+       <Button
+           android:id="@+id/new_thread"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:gravity="center_vertical"
+           android:text="@string/button_new_thread" />
+  </LinearLayout>    
+    
+    
+    
+    
+    
+    
+    
+    
 </RelativeLayout>
