@@ -39,6 +39,5 @@
     <string name="top_bar">Catroid Forum</string>
     <string name="login">Login</string>
     <string name="title_activity_threads">ThreadsActivity</string>
-    <string name="new_threads">Threads</string>
-    <string name="button_new_thread">New Threads</string>
+    <string name="button_new_thread">New Thread</string>
 </resources>
