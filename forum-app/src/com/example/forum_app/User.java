@@ -24,9 +24,9 @@ public class User {
 		{
 			User.userid = userid;
 			User.json = db.sendQuery(query);
-            User.nickname = json.get(1).getString("nickname");
-            User.country = json.get(3).getString("country");
-            User.email = json.get(5).getString("email");
+            User.nickname = json.get(0).getString("nickname");
+            User.country = json.get(0).getString("country");
+            User.email = json.get(0).getString("email");
 		}
 		catch(Exception ex)
 		{
