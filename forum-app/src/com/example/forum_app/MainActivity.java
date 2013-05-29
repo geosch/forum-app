@@ -29,7 +29,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 	// Define here how many "Newest Posts" should be displayed:
 	final static int NUMBER_NEWEST_POSTS = 3;
 	
-
+	private ArrayList<Category> categories_obj;
 	private ExpandableListView list_newest_posts;
 	private ListView list_categories;
 	private Button login;
@@ -41,6 +41,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 
 	private List<JSONObject> json_categories;
 	private List<JSONObject> json_newest_posts;
+
 	
 	private View.OnClickListener logoutlistener;
 	private View.OnClickListener loginlistener;
@@ -50,7 +51,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 	public List<JSONObject> getJsonNewestPosts() { return json_newest_posts; };
 	public List<JSONObject> getJsonCategories() { return json_categories; };
 	public int getMaxNumberNewesPosts() { return NUMBER_NEWEST_POSTS; };
-	
+	public ArrayList<Category> getCategoriesObj() { return categories_obj; };
 	
 	
     /**
@@ -63,6 +64,9 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		setContentView(R.layout.activity_main);
 		Resources res = getResources();
 
+
+		
+		
 		
 		/* ******************************************* *
 		 * The expandable list for the newest posts: 
@@ -126,6 +130,8 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		 * The normal list for the categories: 
 		 * ******************************************* */
 		list_categories = (ListView) findViewById(R.id.list_categories);
+		categories_obj =  new ArrayList<Category>();
+		
 		
 		String query_categories = "SELECT * FROM Category";
 		// Send the query to the Database:
@@ -138,21 +144,26 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 			e.printStackTrace();
 		}
 		
-		final ArrayList<String> list = new ArrayList<String>();
+		
 		
 		// From each row of the JSON Table with the categories we extract the name
 		// and insert it into the list
 		for (int i = 0; i < json_categories.size(); i++) {
 			try {
-				list.add(json_categories.get(i).getString("name"));
+				String name = json_categories.get(i).getString("name");
+				int id = Integer.parseInt(json_categories.get(i).getString("categoryid"));
+				String description = json_categories.get(i).getString("description");
+				categories_obj.add(new Category(name, id, description));
 			} catch (JSONException e) {
 				Log.d("MainActivity", "JSON Parser : Zugriff auf Categories fehlgeschlagen!");
 				e.printStackTrace();
 			}
 		}
 		
+		Log.d("MainActivity", categories_obj.toString());
+		
 		// Now we can set the adapter:
-		list_categories.setAdapter(new ArrayAdapter<String>(this, R.layout.list_view, list));
+		list_categories.setAdapter(new ArrayAdapter<Category>(this, R.layout.list_view, this.categories_obj));
 		
 		list_categories.setOnItemClickListener(this);
 
@@ -167,6 +178,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		final Intent login_intent = new Intent(this, LoginActivity.class);
 		final Intent register_intent = new Intent(this, RegisterActivity.class);
 		
+
 		logoutlistener = new OnClickListener() {
 			
 			@Override
@@ -179,6 +191,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		};
 		
 		loginlistener = new OnClickListener() {
+
 			public void onClick(View v) 
 	        {   
 				Log.d("MainActivity", "Login OnClickListener Fired");
@@ -192,7 +205,9 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 			public void onClick(View v) 
 	        {   
 
+
 	            startActivityForResult(register_intent, REGISTER_ACTIVITY);      
+
 	        }
 	    });
 	
@@ -266,8 +281,16 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		//TODO: Start the Activity with the Categorie here!
-		TextView test = (TextView) arg1;
-		Log.d("MainActivity", "Categories OnChildClickListener Fired with " + test.getText());
+		TextView category = (TextView) arg1;
+		Category selectedCategory = (Category) arg0.getAdapter().getItem(arg2);
+
+		final Intent threads_intent = new Intent(this, ThreadsActivity.class);
+		threads_intent.putExtra("categoryID", category.getText());
+		if (selectedCategory == null)
+			Log.d("MainActivity", "selectedCategoty null");
+		threads_intent.putExtra("category", selectedCategory);
+		startActivity(threads_intent);
+		Log.d("MainActivity", "Categories OnChildClickListener Fired with " + category.getText());
 	}
 	
 	private void changeLoginToLogout() {

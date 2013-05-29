@@ -1,7 +1,10 @@
 package com.example.forum_app.test;
 
 import junit.framework.Assert;
+import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.UiThreadTest;
+import android.widget.Button;
 
 import com.example.forum_app.LoginActivity;
 import com.example.forum_app.MainActivity;
