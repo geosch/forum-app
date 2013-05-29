@@ -1,12 +1,17 @@
 package com.example.forum_app;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.json.JSONObject;
 
 import android.util.Log;
 
-public class User {
+public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static User instance = null;
 	private static int userid;
 	private static String nickname;

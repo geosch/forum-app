@@ -234,7 +234,7 @@ public class LoginActivity extends Activity {
                 int userid = json.get(0).getInt("userid");
 				Log.d("Login","userid: " + userid);
 				Intent switchtomain = new Intent(LoginActivity.this, MainActivity.class);
-				switchtomain.putExtra("userid", userid);
+				switchtomain.putExtra("userobject", User.getInstance(userid));
 				startActivity(switchtomain);
 			}
 			catch(Exception ex)
