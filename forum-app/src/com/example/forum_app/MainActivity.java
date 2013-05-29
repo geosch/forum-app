@@ -34,6 +34,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 	private Button login;
 	private Button register;
 	private int userid = 0;
+	private static User user;
 	private static final int REGISTER_ACTIVITY = 1;
 	private static final int LOGIN_ACTIVITY = 2;
 
@@ -215,14 +216,13 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
     	
     }
     
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+    	Log.d("Main: ", "OnActivityResult!");
     	  if (requestCode == REGISTER_ACTIVITY) {
 
     	     if(resultCode == RESULT_OK){      
-    	         this.userid = data.getIntExtra("userid", 0);
-    	         Log.d("Deb: ", "Returned from Register Activity with uID: " + userid);
+    	         user = User.getInstance();
+    	         Log.d("Main: ", "Returned from Register Activity with uID: " + user.getUserid());
     	     }
     	     if (resultCode == RESULT_CANCELED) {    
     	         //Write your code if there's no result
