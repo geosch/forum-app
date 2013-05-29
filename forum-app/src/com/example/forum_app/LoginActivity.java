@@ -1,14 +1,26 @@
 package com.example.forum_app;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
+
+import org.json.JSONException;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -41,6 +53,12 @@ public class LoginActivity extends Activity {
 	// Values for email and password at the time of the login attempt.
 	private String mEmail;
 	private String mPassword;
+	private List<JSONObject> json;
+	private DBOperator db = DBOperator.getInstance();
+	private String query;
+	private JSONParser jsonParser;
+	private String url;
+	private ArrayList<NameValuePair> param;
 
 	// UI references.
 	private EditText mEmailView;
@@ -48,6 +66,7 @@ public class LoginActivity extends Activity {
 	private View mLoginFormView;
 	private View mLoginStatusView;
 	private TextView mLoginStatusMessageView;
+	private LoginActivity lActivity;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +78,7 @@ public class LoginActivity extends Activity {
 		
 
 		// Set up the login form.
+		lActivity = this;
 		mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
 		mEmailView = (EditText) findViewById(R.id.email);
 		mEmailView.setText(mEmail);
@@ -80,6 +100,8 @@ public class LoginActivity extends Activity {
 		mLoginFormView = findViewById(R.id.login_form);
 		mLoginStatusView = findViewById(R.id.login_status);
 		mLoginStatusMessageView = (TextView) findViewById(R.id.login_status_message);
+		
+		
 
 		findViewById(R.id.sign_in_button).setOnClickListener(
 				new View.OnClickListener() {
@@ -103,9 +125,6 @@ public class LoginActivity extends Activity {
 	 * errors are presented and no actual login attempt is made.
 	 */
 	public void attemptLogin() {
-		if (mAuthTask != null) {
-			return;
-		}
 
 		// Reset errors.
 		mEmailView.setError(null);
@@ -190,8 +209,10 @@ public class LoginActivity extends Activity {
 		} else {
 			// The ViewPropertyAnimator APIs are not available, so simply show
 			// and hide the relevant UI components.
+			
 			mLoginStatusView.setVisibility(show ? View.VISIBLE : View.GONE);
 			mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+			
 		}
 	}
 
@@ -203,25 +224,28 @@ public class LoginActivity extends Activity {
 		@Override
 		protected Boolean doInBackground(Void... params) {
 			// TODO: attempt authentication against a network service.
-
-			try {
-				// Simulate network access.
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				return false;
+			
+		    query = "Select UserID from forumuser Where Email = '" + mEmail + "' AND Password = '" + mPassword + "'";
+			
+			
+			try
+			{
+				json = db.sendQuery(query);
+                int userid = json.get(0).getInt("userid");
+				Log.d("Login","userid: " + userid);
+				Intent switchtomain = new Intent(LoginActivity.this, MainActivity.class);
+				switchtomain.putExtra("userid", userid);
+				startActivity(switchtomain);
 			}
-
-			for (String credential : DUMMY_CREDENTIALS) {
-				String[] pieces = credential.split(":");
-				if (pieces[0].equals(mEmail)) {
-					// Account exists, return true if the password matches.
-					return pieces[1].equals(mPassword);
-				}
+			catch(Exception ex)
+			{
+                return false;
 			}
-
-			// TODO: register the new account here.
+			
 			return true;
 		}
+		
+		
 
 		@Override
 		protected void onPostExecute(final Boolean success) {
@@ -243,4 +267,5 @@ public class LoginActivity extends Activity {
 			showProgress(false);
 		}
 	}
+
 }

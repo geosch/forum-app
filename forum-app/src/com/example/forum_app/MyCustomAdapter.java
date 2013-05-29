@@ -2,18 +2,20 @@ package com.example.forum_app;
 
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.TextView;
  
 import java.util.ArrayList;
  
 
 public class MyCustomAdapter extends BaseExpandableListAdapter {
- 
- 
+  
     private LayoutInflater inflater;
     private ArrayList<Parent> mParent;
  
@@ -88,7 +90,7 @@ public class MyCustomAdapter extends BaseExpandableListAdapter {
         TextView textView = (TextView) view.findViewById(R.id.list_item_text_child);
         //"i" is the position of the parent/group in the list and
         //"i1" is the position of the child
-        textView.setText(mParent.get(i).getArrayChildren().get(i1));
+        textView.setText(mParent.get(i).getArrayChildren().get(i1).getText());
  
         //return the entire view
         return view;
@@ -104,4 +106,5 @@ public class MyCustomAdapter extends BaseExpandableListAdapter {
         /* used to make the notifyDataSetChanged() method work */
         super.registerDataSetObserver(observer);
     }
+
 }

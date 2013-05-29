@@ -1,24 +1,26 @@
 package com.example.forum_app;
 
 import java.util.ArrayList;
+
+import android.widget.TextView;
  
 public class Parent {
-    private String mTitle;
-    private ArrayList<String> mArrayChildren;
+    private String title;
+    private ArrayList<TextView> array_children;
  
     public String getTitle() {
-        return mTitle;
+        return title;
     }
  
-    public void setTitle(String mTitle) {
-        this.mTitle = mTitle;
+    public void setTitle(String t) {
+        this.title = t;
     }
  
-    public ArrayList<String> getArrayChildren() {
-        return mArrayChildren;
+    public ArrayList<TextView> getArrayChildren() {
+        return array_children;
     }
  
-    public void setArrayChildren(ArrayList<String> mArrayChildren) {
-        this.mArrayChildren = mArrayChildren;
+    public void setArrayChildren(ArrayList<TextView> children) {
+        this.array_children = children;
     }
 }

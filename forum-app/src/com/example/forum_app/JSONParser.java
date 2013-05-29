@@ -56,10 +56,7 @@ public class JSONParser {
             	
             	is = new InputStreamReader(connect.getInputStream());
             	
-            	if (is != null)
-            	{
-            		Log.d("DBConnection", "inputstreamreader != null");
-            	}
+
  
             }else if(method == "GET"){
             	
@@ -97,7 +94,7 @@ public class JSONParser {
             Log.e("JSON Parser", "Error parsing data " + e.toString());
         }
         catch (Exception e) {
-            Log.e("Buffer Error", "Error converting result " + e.toString());
+            return null;
         }
 
  
