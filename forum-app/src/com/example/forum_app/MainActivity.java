@@ -55,9 +55,9 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		Resources res = getResources();
 
 		
-		/*
+		/* ******************************************* *
 		 * The expandable list for the newest posts: 
-		 * */
+		 * ******************************************* */
 		list_newest_posts = (ExpandableListView) findViewById(R.id.list_newest_posts);
 	
 		String query_newest_posts = "SELECT Subject FROM Thread WHERE ThreadID IN ";
@@ -113,9 +113,9 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		
 		
 
-		/*
+		/* ******************************************* *
 		 * The normal list for the categories: 
-		 * */
+		 * ******************************************* */
 		list_categories = (ListView) findViewById(R.id.list_categories);
 		
 		String query_categories = "SELECT * FROM Category";
@@ -149,13 +149,14 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 
 		
 
-		/*
+		/* ******************************************* *
 		 * The The bottom Bar with Login and Register: 
-		 * */
+		 * ******************************************* */
 		login = (Button) findViewById(R.id.login);
 		register = (Button) findViewById(R.id.register);
 		
 		final Intent login_intent = new Intent(this, LoginActivity.class);
+		final Intent register_intent = new Intent(this, RegisterActivity.class);
 		
 		login.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) 
@@ -165,8 +166,6 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 	            finish();
 	        }
 	    });
-		
-		final Intent register_intent = new Intent(this, RegisterActivity.class);
 		
 		register.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) 
@@ -228,7 +227,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
     */
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		//TODO: Start the Activity with the Categories here!
+		//TODO: Start the Activity with the Categorie here!
 		TextView test = (TextView) arg1;
 		Log.d("MainActivity", "Categories OnChildClickListener Fired with " + test.getText());
 	}
