@@ -21,6 +21,7 @@ import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity implements OnChildClickListener, OnItemClickListener{
@@ -40,6 +41,9 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 
 	private List<JSONObject> json_categories;
 	private List<JSONObject> json_newest_posts;
+	
+	private View.OnClickListener logoutlistener;
+	private View.OnClickListener loginlistener;
 	
 	
 	/** Getter **/
@@ -163,19 +167,32 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		final Intent login_intent = new Intent(this, LoginActivity.class);
 		final Intent register_intent = new Intent(this, RegisterActivity.class);
 		
-		login.setOnClickListener(new OnClickListener() {
+		logoutlistener = new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				user = null;
+				login.setText(R.string.login);
+				login.setOnClickListener(loginlistener);
+				register.setVisibility(View.VISIBLE);
+				}
+		};
+		
+		loginlistener = new OnClickListener() {
 			public void onClick(View v) 
 	        {   
 				Log.d("MainActivity", "Login OnClickListener Fired");
-	            startActivity(login_intent);      
+	            startActivityForResult(login_intent, LOGIN_ACTIVITY);      
 	        }
-	    });
+	    };
+		
+		login.setOnClickListener(loginlistener);
 		
 		register.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) 
 	        {   
 
-	            startActivityForResult(register_intent, 1);      
+	            startActivityForResult(register_intent, REGISTER_ACTIVITY);      
 	        }
 	    });
 	
@@ -206,11 +223,15 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
     
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     	Log.d("Main: ", "OnActivityResult!");
-    	  if (requestCode == REGISTER_ACTIVITY) {
+    	  if (requestCode == REGISTER_ACTIVITY || requestCode == LOGIN_ACTIVITY) {
 
-    	     if(resultCode == RESULT_OK){      
+    	     if(resultCode == RESULT_OK && user != null){      
     	         user = User.getInstance();
+    	         changeLoginToLogout();
     	         Log.d("Main: ", "Returned from Register Activity with uID: " + user.getUserid());
+    	         Toast.makeText(getApplicationContext(), "Your are now logged in!", Toast.LENGTH_SHORT).show();
+    	         login.setText("Logout");
+    	         register.setVisibility(View.INVISIBLE);
     	     }
     	     if (resultCode == RESULT_CANCELED) {    
     	         //Write your code if there's no result
@@ -247,5 +268,10 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		//TODO: Start the Activity with the Categorie here!
 		TextView test = (TextView) arg1;
 		Log.d("MainActivity", "Categories OnChildClickListener Fired with " + test.getText());
+	}
+	
+	private void changeLoginToLogout() {
+		if(user != null)
+			login.setOnClickListener(logoutlistener);
 	}
 }

@@ -235,8 +235,9 @@ public class LoginActivity extends Activity {
                 int userid = json.get(0).getInt("userid");
 				Log.d("Login","userid: " + userid);
 				User.createInstance(userid);
-				Intent switchtomain = new Intent(LoginActivity.this, MainActivity.class);
-				startActivity(switchtomain);
+				Intent returnIntent = new Intent();
+	        	setResult(RESULT_OK, returnIntent);     
+	        	finish();
 			}
 			catch(Exception ex)
 			{
