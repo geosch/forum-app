@@ -146,8 +146,8 @@ public class RegisterActivity extends Activity {
 				
 						builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 						           public void onClick(DialogInterface dialog, int id) {
+						        	   User.createInstance(userid);
 						        	   Intent returnIntent = new Intent();
-						        	   returnIntent.putExtra("userobject", User.getInstance(userid));
 						        	   setResult(RESULT_OK, returnIntent);     
 						        	   finish();
 						           }

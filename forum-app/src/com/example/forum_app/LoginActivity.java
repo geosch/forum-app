@@ -1,5 +1,6 @@
 package com.example.forum_app;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -233,8 +234,8 @@ public class LoginActivity extends Activity {
 				json = db.sendQuery(query);
                 int userid = json.get(0).getInt("userid");
 				Log.d("Login","userid: " + userid);
+				User.createInstance(userid);
 				Intent switchtomain = new Intent(LoginActivity.this, MainActivity.class);
-				switchtomain.putExtra("userobject", User.getInstance(userid));
 				startActivity(switchtomain);
 			}
 			catch(Exception ex)
