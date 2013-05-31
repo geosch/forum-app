@@ -62,6 +62,8 @@ public class User {
 		return User.userid;
 	}
 	
-	
+	public void destroyInstance() {
+		instance = null;
+	}
 
 }

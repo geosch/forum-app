@@ -183,7 +183,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 			
 			@Override
 			public void onClick(View v) {
-				user = null;
+				user.destroyInstance();
 				login.setText(R.string.login);
 				login.setOnClickListener(loginlistener);
 				register.setVisibility(View.VISIBLE);
@@ -237,11 +237,12 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
     }
     
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	Log.d("Main: ", "OnActivityResult!");
+    	
     	  if (requestCode == REGISTER_ACTIVITY || requestCode == LOGIN_ACTIVITY) {
-
-    	     if(resultCode == RESULT_OK && user != null){      
-    	         user = User.getInstance();
+    		  user = User.getInstance();
+    	      if(resultCode == RESULT_OK && user != null){    
+    	    	 Log.d("Main: ", "OnActivityResult!");
+    	         
     	         changeLoginToLogout();
     	         Log.d("Main: ", "Returned from Register Activity with uID: " + user.getUserid());
     	         Toast.makeText(getApplicationContext(), "Your are now logged in!", Toast.LENGTH_SHORT).show();
