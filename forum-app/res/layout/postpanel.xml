@@ -83,8 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_weight="70"
-                android:text="v"
-                android:background="@drawable/catroid" />
+                android:background="@drawable/expander_ic_minimized" />
         </LinearLayout>
     </com.example.forum_app.ExpandablePanel>
  

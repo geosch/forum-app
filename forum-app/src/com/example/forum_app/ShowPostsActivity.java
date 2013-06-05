@@ -8,6 +8,7 @@ import java.util.Vector;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.R.drawable;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -136,14 +137,13 @@ public class ShowPostsActivity extends Activity
 	        ex_post_panel.setOnExpandListener(new ExpandablePanel.OnExpandListener() {
 			    public void onCollapse(View handle, View content) {
 			    	Button btn = (Button)handle;
-			        btn.setText("v");
-			        
+			    	btn.setBackgroundResource(R.drawable.expander_ic_minimized);
 			        ex_post_panel.setCollapsedHeight(20);
 			     }
 			     public void onExpand(View handle, View content) {
 			     	Button btn = (Button)handle;
+			     	btn.setBackgroundResource(R.drawable.expander_ic_maximized);
 			     	ex_post_panel.setCollapsedHeight(20);
-			     	btn.setText("^");
 		     }
 		     });
 		}
