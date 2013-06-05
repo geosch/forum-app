@@ -73,7 +73,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		 * ******************************************* */
 		list_newest_posts = (ExpandableListView) findViewById(R.id.list_newest_posts);
 	
-		String query_newest_posts = "SELECT Subject FROM Thread WHERE ThreadID IN ";
+		String query_newest_posts = "SELECT Subject,ThreadID FROM Thread WHERE ThreadID IN ";
 		query_newest_posts += "(SELECT DISTINCT ThreadID FROM Post WHERE ThreadID IN ";
 		query_newest_posts += "(SELECT ThreadID FROM Post ORDER BY CreateDate DESC FETCH FIRST ";
 		query_newest_posts += NUMBER_NEWEST_POSTS; 
