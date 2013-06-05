@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -85,27 +86,30 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 		list_new_threads.setAdapter(new ArrayAdapter<ForumThread>(this, R.layout.list_view, list));
 		
 		list_new_threads.setOnItemClickListener(this);
-	
 
+		button_new_thread = (Button) findViewById(R.id.new_thread);	
+		LinearLayout button_parent = (LinearLayout) button_new_thread.getParent();
+		if(User.getInstance() == null)
+		{
+			button_parent.setVisibility(View.GONE);
+		}
+		else
+		{
+			button_parent.setVisibility(View.VISIBLE);
+			final Intent post_form_intent = new Intent(this, PostFormActivity.class);
 	
-	final Intent post_form_intent = new Intent(this, PostFormActivity.class);
-	
-	button_new_thread = (Button) findViewById(R.id.new_thread);
-	
-	button_new_thread.setOnClickListener(new OnClickListener() {
-		public void onClick(View v) 
-        {   
-			post_form_intent.putExtra("categoryID", category.getId());
-			post_form_intent.putExtra("threadID", -1);
+			button_new_thread.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) 
+				{   
+					post_form_intent.putExtra("categoryID", category.getId());
+					post_form_intent.putExtra("threadID", -1);
 
+					startActivityForResult(post_form_intent, 1);
 			
-			
-			startActivityForResult(post_form_intent, 1);
-			
-			Log.d("ThreadsActivity", "New Thread OnClickListener Fired");
-        }
-    });
-	
+					Log.d("ThreadsActivity", "New Thread OnClickListener Fired");
+				}
+			});
+		}
 
 }
 	
