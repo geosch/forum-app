@@ -30,11 +30,10 @@ import android.widget.ExpandableListView.OnChildClickListener;
 public class ShowPostsActivity extends Activity
 {	
 	private List<JSONObject> json_posts;
-	private Integer threadid = 1;
+	private Integer threadid = 0;
 	private ExpandablePanel ex_post_panel;
-//	private Map<Integer, Integer> postid_map;
 	private LinearLayout ll;
-	private Integer loged_in_userid = 1;
+	private Integer loged_in_userid = -1;
 	static final private Integer POST_ID_INC_VALUE = 100000;
 	
 	@Override
@@ -43,6 +42,15 @@ public class ShowPostsActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_posts);
 		
+		ForumThread thread = (ForumThread) this.getIntent().getSerializableExtra("thread");
+		
+		this.threadid = thread.getId();
+		if (User.getInstance() != null)
+		{
+			this.loged_in_userid = User.getInstance().getUserid();
+		}
+		Log.d("ShowPostsTest: ", "[Activity] loged_in_userid: " + this.loged_in_userid.toString());
+		Log.d("ShowPostsTest: ", "[Activity] threadid: " + this.threadid.toString());
 		String query_posts = 
 		"SELECT forumuser.userid, forumuser.nickname, thread.subject, post.postid, post.content, post.createdate, thread.subject " 
 		+ " FROM post INNER JOIN thread on(post.threadid = thread.threadid)"
@@ -62,7 +70,7 @@ public class ShowPostsActivity extends Activity
 		} 
 		catch (NullPointerException e) 
 		{
-			Log.d("MainActivity", "JSON Parser : Zugriff auf Datenbank fehlgeschlagen!");
+			Log.d("ShowPostsActivity", "JSON Parser : Zugriff auf Datenbank fehlgeschlagen!");
 			e.printStackTrace();
 		}
 		
@@ -110,8 +118,12 @@ public class ShowPostsActivity extends Activity
 	        
 	        Button btedit = new Button(this);
 	        btedit = (Button)header.getChildAt(2);
-	        if(userid != loged_in_userid)
+	        
+	        Log.d("ShowPostsTest: ", "[Activity] userid: " + userid.toString());
+	        Log.d("ShowPostsTest: ", "[Activity] this.loged_in_userid: " + this.loged_in_userid.toString());
+	        if(!userid.equals(this.loged_in_userid))
 	        {
+	        	Log.d("ShowPostsTest: ", "[Activity] gone: " + this.loged_in_userid.toString());
 		        btedit.setVisibility(View.GONE);
 	        }
 	        btedit.setId(POST_ID_INC_VALUE + postid);
@@ -151,7 +163,8 @@ public class ShowPostsActivity extends Activity
 		Button edit = (Button)view;
 		Integer postid = edit.getId() - POST_ID_INC_VALUE;
 		Log.d("ShowPosts", "postid: " + postid.toString());
-		// TODO Call Intent to create/edit Post Oberfläche.
+		// TODO Call Intent to create/edit Post Avtivity. 
+		// PostID = postid
 	}
 
 
