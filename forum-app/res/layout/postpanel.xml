@@ -64,7 +64,7 @@
         <LinearLayout
             android:id="@+id/expandL"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
             android:weightSum="100" >
