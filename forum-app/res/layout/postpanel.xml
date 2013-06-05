@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:id="@+id/layout_item_id">
+    
+    
+    <com.example.forum_app.ExpandablePanel
+        xmlns:example="http://schemas.android.com/apk/res/com.example.forum_app"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        example:collapsedHeight="20dip"
+        example:content="@+id/value"
+        example:handle="@+id/expand"
+        example:isviewgroup="true"
+        example:viewgroup="@+id/expandL" >
+		
+		<LinearLayout
+            android:id="@+id/header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100" >
+			
+			<TextView
+            android:id="@+id/header_user"
+            android:text=""
+            android:layout_height="wrap_content"
+            android:maxHeight="50dip" 
+            android:textColor="@color/red"
+            android:layout_gravity="left"
+            android:layout_width="0dp"
+            android:layout_weight="20"/>
+			
+			<TextView
+            android:id="@+id/header_subject"
+            android:text=""
+            android:layout_height="wrap_content"
+            android:maxHeight="50dip" 
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="80"/>
+            
+			<Button
+            android:id="@+id/edit"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical|right"
+            android:text="edit"
+            android:textSize="5dp"
+            android:background="@color/red"
+            android:onClick="editPost" />
+			
+        </LinearLayout>
+		
+		
+        <TextView
+            android:id="@+id/value"
+            android:text="HALLO"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dip"/>
+
+        <LinearLayout
+            android:id="@+id/expandL"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:weightSum="100" >
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical|left"
+                android:layout_weight="30"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/expand"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_weight="70"
+                android:text="v"
+                android:background="@drawable/catroid" />
+        </LinearLayout>
+    </com.example.forum_app.ExpandablePanel>
+ 
+</LinearLayout>

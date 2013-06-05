@@ -183,7 +183,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 			
 			@Override
 			public void onClick(View v) {
-				user.destroyInstance();
+				User.destroyInstance();
 				login.setText(R.string.login);
 				login.setOnClickListener(loginlistener);
 				register.setVisibility(View.VISIBLE);
