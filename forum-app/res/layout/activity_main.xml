@@ -26,11 +26,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:background="#12A6e0"
-        android:text="@string/categories"
-        android:textColor="#293871"
-        android:textSize="18sp" />
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:paddingLeft="10dp"
+        android:textColor="#ffffff"
+        android:background="#f88017"
+        android:textSize="22sp"
+        android:text="@string/categories" />
     
     <ListView
         android:id="@+id/list_categories"
