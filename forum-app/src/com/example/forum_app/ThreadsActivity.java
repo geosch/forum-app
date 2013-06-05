@@ -68,13 +68,13 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 			e.printStackTrace();
 		}
 		
-		final ArrayList<String> list = new ArrayList<String>();
+		final ArrayList<ForumThread> list = new ArrayList<ForumThread>();
 		
 		// From each row of the JSON Table with the categories we extract the name
 		// and insert it into the list
 		for (int i = 0; i < json_new_threads.size(); i++) {
 			try {
-				list.add(json_new_threads.get(i).getString("subject"));
+				list.add(new ForumThread(json_new_threads.get(i).getInt("threadid"), json_new_threads.get(i).getString("subject")));
 			} catch (JSONException e) {
 				Log.d("ThreadsActivity", "JSON Parser : Zugriff auf Categories fehlgeschlagen!");
 				e.printStackTrace();
@@ -82,7 +82,7 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 		}
 		
 		// Now we can set the adapter:
-		list_new_threads.setAdapter(new ArrayAdapter<String>(this, R.layout.list_view, list));
+		list_new_threads.setAdapter(new ArrayAdapter<ForumThread>(this, R.layout.list_view, list));
 		
 		list_new_threads.setOnItemClickListener(this);
 	
@@ -133,9 +133,17 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		//TODO: Start the Activity with the Thread here!
-		TextView test = (TextView) arg1;
-		Log.d("ThreadsActivity", "Categories OnChildClickListener Fired with " + test.getText());		
+		
+		ForumThread selected_thread = (ForumThread) arg0.getAdapter().getItem(arg2);
+		
+		final Intent post_intent = new Intent(this, ShowPostsActivity.class);
+
+		if (selected_thread == null)
+			Log.d("ThreadsActivity", "selected_thread null");
+		
+		post_intent.putExtra("thread", selected_thread);
+		startActivity(post_intent);
+		Log.d("ThreadsActivity", "Categories OnChildClickListener Fired with " + selected_thread.getId());		
 	}
 
 	

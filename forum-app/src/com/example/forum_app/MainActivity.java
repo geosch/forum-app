@@ -64,10 +64,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		setContentView(R.layout.activity_main);
 		Resources res = getResources();
 
-		
-		
-	
-		
+
 		
 		
 		
@@ -181,14 +178,15 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		final Intent login_intent = new Intent(this, LoginActivity.class);
 		final Intent register_intent = new Intent(this, RegisterActivity.class);
 		
+
 		logoutlistener = new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-					user.destroyInstance();
-					login.setText(R.string.login);
-					login.setOnClickListener(loginlistener);
-					register.setVisibility(View.VISIBLE);
+				user.destroyInstance();
+				login.setText(R.string.login);
+				login.setOnClickListener(loginlistener);
+				register.setVisibility(View.VISIBLE);
 				}
 		};
 		
@@ -239,7 +237,8 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
     }
     
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	if (requestCode == REGISTER_ACTIVITY || requestCode == LOGIN_ACTIVITY) {
+    	
+    	  if (requestCode == REGISTER_ACTIVITY || requestCode == LOGIN_ACTIVITY) {
     		  user = User.getInstance();
     	      if(resultCode == RESULT_OK && user != null){    
     	    	 Log.d("Main: ", "OnActivityResult!");
@@ -263,15 +262,26 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 	@Override
 	public boolean onChildClick(ExpandableListView parent, View v,
 			int groupPosition, int childPosition, long id) {
-		//TODO: Start the Activity with the new Thread here!
-		String test = new String();
+		
+		String subject = new String();
+		Integer threadid = -1;
 		try {
-			test = json_newest_posts.get(childPosition).getString("subject");
+			subject = json_newest_posts.get(childPosition).getString("subject");
+			threadid = json_newest_posts.get(childPosition).getInt("threadid");
 		} catch (JSONException e) {
-			Log.d("MainActivity", "JSON Parser : Zugriff auf neueste Posts fehlgeschlagen!");
+			Log.d("IntentShowPosts", "JSON Parser : Zugriff auf neueste Posts fehlgeschlagen!");
 			e.printStackTrace();
 		}
-		Log.d("MainActivity", "Newest Posts OnChildClickListener Fired with " + test);
+		ForumThread thread = new ForumThread(threadid, subject);
+		
+		Log.d("IntentShowPosts", "newest posts onChildClick with " + thread.getId());
+		Log.d("IntentShowPosts", thread.toString());
+		
+		final Intent post_intent = new Intent(this, ShowPostsActivity.class);
+		post_intent.putExtra("thread", thread);
+		
+		startActivity(post_intent);	
+		
 		return false; // set to true (95% sure ;-) )
 	}
 	
@@ -282,7 +292,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
     */
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		//TODO: Start the Activity with the Categorie here!
+		
 		TextView category = (TextView) arg1;
 		Category selectedCategory = (Category) arg0.getAdapter().getItem(arg2);
 
