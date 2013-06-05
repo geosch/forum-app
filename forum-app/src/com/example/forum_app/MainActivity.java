@@ -73,7 +73,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		 * ******************************************* */
 		list_newest_posts = (ExpandableListView) findViewById(R.id.list_newest_posts);
 	
-		String query_newest_posts = "SELECT Subject FROM Thread WHERE ThreadID IN ";
+		String query_newest_posts = "SELECT Subject, Threadid FROM Thread WHERE ThreadID IN ";
 		query_newest_posts += "(SELECT DISTINCT ThreadID FROM Post WHERE ThreadID IN ";
 		query_newest_posts += "(SELECT ThreadID FROM Post ORDER BY CreateDate DESC FETCH FIRST ";
 		query_newest_posts += NUMBER_NEWEST_POSTS; 
@@ -262,15 +262,26 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 	@Override
 	public boolean onChildClick(ExpandableListView parent, View v,
 			int groupPosition, int childPosition, long id) {
-		//TODO: Start the Activity with the new Thread here!
-		String test = new String();
+		
+		String subject = new String();
+		Integer threadid = -1;
 		try {
-			test = json_newest_posts.get(childPosition).getString("subject");
+			subject = json_newest_posts.get(childPosition).getString("subject");
+			threadid = json_newest_posts.get(childPosition).getInt("threadid");
 		} catch (JSONException e) {
-			Log.d("MainActivity", "JSON Parser : Zugriff auf neueste Posts fehlgeschlagen!");
+			Log.d("IntentShowPosts", "JSON Parser : Zugriff auf neueste Posts fehlgeschlagen!");
 			e.printStackTrace();
 		}
-		Log.d("MainActivity", "Newest Posts OnChildClickListener Fired with " + test);
+		ForumThread thread = new ForumThread(threadid, subject);
+		
+		Log.d("IntentShowPosts", "newest posts onChildClick with " + thread.getId());
+		Log.d("IntentShowPosts", thread.toString());
+		
+		final Intent post_intent = new Intent(this, ShowPostsActivity.class);
+		post_intent.putExtra("thread", thread);
+		
+		startActivity(post_intent);	
+		
 		return false; // set to true (95% sure ;-) )
 	}
 	
@@ -281,7 +292,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
     */
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		//TODO: Start the Activity with the Categorie here!
+		
 		TextView category = (TextView) arg1;
 		Category selectedCategory = (Category) arg0.getAdapter().getItem(arg2);
 
