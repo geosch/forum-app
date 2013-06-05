@@ -36,7 +36,6 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 	public List<JSONObject> getJsonNewThreads() { return json_new_threads; };
 	
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
