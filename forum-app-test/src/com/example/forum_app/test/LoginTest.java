@@ -11,6 +11,7 @@ import com.example.forum_app.R;
 import com.jayway.android.robotium.solo.Solo;
 
 import android.app.Activity;
+import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.widget.Button;
@@ -24,7 +25,6 @@ public class LoginTest extends ActivityInstrumentationTestCase2<MainActivity> {
 	private EditText password;
 	private LoginActivity lactivity;
 	
-    @SuppressWarnings("deprecation")
 	public LoginTest() {
     	super(MainActivity.class);
 	}
@@ -63,8 +63,9 @@ public class LoginTest extends ActivityInstrumentationTestCase2<MainActivity> {
 		solo.clickOnButton("Login");
 		
 		solo.waitForActivity("MainActivity");
-		
-		Assert.assertEquals(solo.getCurrentActivity().getIntent().getSerializableExtra("userid"), 3);
+		User user = User.getInstance();
+		Assert.assertNotNull(user);
+		Assert.assertEquals(user.getUserid(), 3);
 	}
 	
     public void testWrongLogin() throws Throwable {
