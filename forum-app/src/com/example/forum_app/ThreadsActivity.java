@@ -28,7 +28,7 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 	private ListView list_new_threads;
 	private Button button_new_thread;
 	private List<JSONObject> json_new_threads;
-	
+	private Category category;
 	
 	
 	/** Getter **/
@@ -41,7 +41,7 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_threads);
 		
-	    Category category = (Category) this.getIntent().getSerializableExtra("category");
+	    category = (Category) this.getIntent().getSerializableExtra("category");
 		
 	    header = (TextView) findViewById(R.id.category_header);
 		header.setText(category.getName());
@@ -88,13 +88,20 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 	
 
 	
-	
+	final Intent post_form_intent = new Intent(this, PostFormActivity.class);
 	
 	button_new_thread = (Button) findViewById(R.id.new_thread);
 	
 	button_new_thread.setOnClickListener(new OnClickListener() {
 		public void onClick(View v) 
         {   
+			post_form_intent.putExtra("categoryID", category.getId());
+			post_form_intent.putExtra("threadID", -1);
+
+			
+			
+			startActivityForResult(post_form_intent, 1);
+			
 			Log.d("ThreadsActivity", "New Thread OnClickListener Fired");
         }
     });
@@ -131,4 +138,10 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 		Log.d("ThreadsActivity", "Categories OnChildClickListener Fired with " + test.getText());		
 	}
 
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		Log.d("ThreadsActivity", "onActivityResult started");	
+		finish();
+		startActivity(getIntent());
+	}
 }

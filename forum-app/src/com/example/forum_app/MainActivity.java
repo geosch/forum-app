@@ -64,7 +64,10 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		setContentView(R.layout.activity_main);
 		Resources res = getResources();
 
-
+		
+		
+	
+		
 		
 		
 		
@@ -178,15 +181,14 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		final Intent login_intent = new Intent(this, LoginActivity.class);
 		final Intent register_intent = new Intent(this, RegisterActivity.class);
 		
-
 		logoutlistener = new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				user.destroyInstance();
-				login.setText(R.string.login);
-				login.setOnClickListener(loginlistener);
-				register.setVisibility(View.VISIBLE);
+					user.destroyInstance();
+					login.setText(R.string.login);
+					login.setOnClickListener(loginlistener);
+					register.setVisibility(View.VISIBLE);
 				}
 		};
 		
@@ -237,8 +239,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
     }
     
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	
-    	  if (requestCode == REGISTER_ACTIVITY || requestCode == LOGIN_ACTIVITY) {
+    	if (requestCode == REGISTER_ACTIVITY || requestCode == LOGIN_ACTIVITY) {
     		  user = User.getInstance();
     	      if(resultCode == RESULT_OK && user != null){    
     	    	 Log.d("Main: ", "OnActivityResult!");
