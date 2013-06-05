@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:drawable/screen_background_light"
+    android:padding="0dip">
+    
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="fill_parent"
+     
+      android:layout_marginBottom="50dp"
+      android:orientation="vertical"
+      android:background="#FFFFFF">
+   
+    <EditText
+        android:id="@+id/post_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_title"
+        android:textSize="18sp"
+        android:inputType="none" />
+
+    <EditText
+        android:id="@+id/post_content"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:hint="@string/hint_content"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:textSize="18sp" />
+    
+  </LinearLayout>
+  
+  <LinearLayout 
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:layout_alignParentBottom="true"
+           android:background="@android:drawable/bottom_bar"
+           android:gravity="center">
+
+       <Button
+           android:id="@+id/button_post"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:gravity="center_vertical"
+           android:text="@string/button_post"
+           android:textColor="#000000"   />
+  </LinearLayout>
+       
+       
+</RelativeLayout>

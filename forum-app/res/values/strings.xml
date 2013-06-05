@@ -39,7 +39,11 @@
     <string name="top_bar">Catroid Forum</string>
     <string name="login">Login</string>
     <string name="title_activity_show_posts">ShowPosts</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_threads">ThreadsActivity</string>
     <string name="button_new_thread">New Thread</string>
+    <string name="title_activity_post_form">PostFormActivity</string>
+    <string name="button_post">Post</string>
+    <string name="hint_title">Enter a title</string>
+    <string name="hint_content">Enter your post</string>
+
 </resources>

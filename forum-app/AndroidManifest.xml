@@ -43,6 +43,10 @@
             android:name="com.example.forum_app.ThreadsActivity"
             android:label="@string/title_activity_threads" >
         </activity>
+        <activity
+            android:name="com.example.forum_app.PostFormActivity"
+            android:label="@string/title_activity_post_form" >
+        </activity>
     </application>
 
 </manifest>
