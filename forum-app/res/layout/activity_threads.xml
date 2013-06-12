@@ -36,7 +36,7 @@
     
     <ListView
       android:id="@+id/list_new_threads"
-      android:layout_width="wrap_content"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:listSelector="@android:color/transparent"
       android:textColor="#000000">
@@ -56,10 +56,11 @@
        <Button
            android:id="@+id/new_thread"
            android:layout_width="0dp"
-           android:layout_height="wrap_content"
+           android:layout_height="match_parent"
            android:gravity="center"
            android:layout_weight="1"
-           android:background="@null"
+           android:background="@color/orange"
+           android:textColor="@color/white"
            android:text="@string/button_new_thread" />
   </LinearLayout>        
 </RelativeLayout>

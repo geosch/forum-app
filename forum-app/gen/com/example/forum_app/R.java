@@ -9,12 +9,62 @@ package com.example.forum_app;
 
 public final class R {
     public static final class array {
-        public static final int gender=0x7f060000;
+        public static final int gender=0x7f070000;
     }
     public static final class attr {
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int animationDuration=0x7f010005;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int buttonBarButtonStyle=0x7f010007;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int buttonBarStyle=0x7f010006;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int collapsedHeight=0x7f010004;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int content=0x7f010001;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int handle=0x7f010000;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int isviewgroup=0x7f010003;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int viewgroup=0x7f010002;
     }
     public static final class color {
-        public static final int red=0x7f070000;
+        public static final int black_overlay=0x7f040000;
+        public static final int blue=0x7f040002;
+        public static final int orange=0x7f040003;
+        public static final int red=0x7f040001;
+        public static final int white=0x7f040004;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -23,97 +73,144 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
         public static final int catroid=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int custom_btn_black_pearl=0x7f020001;
+        public static final int custom_btn_orange=0x7f020002;
+        public static final int custom_btn_seagull=0x7f020003;
+        public static final int edit_post=0x7f020004;
+        public static final int expander_ic_maximized=0x7f020005;
+        public static final int expander_ic_minimized=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
+        public static final int sel_button_round=0x7f020008;
+        public static final int spashscreen=0x7f020009;
     }
     public static final class id {
-        public static final int action_forgot_password=0x7f0a0018;
-        public static final int action_settings=0x7f0a0019;
-        public static final int btRegister=0x7f0a0010;
+        public static final int action_forgot_password=0x7f0a002d;
+        public static final int action_settings=0x7f0a002e;
+        public static final int btRegister=0x7f0a0014;
+        public static final int button_post=0x7f0a000e;
         public static final int categories=0x7f0a0008;
+        public static final int category_header=0x7f0a001a;
+        public static final int edit=0x7f0a002b;
         public static final int email=0x7f0a0003;
-        public static final int etEmail=0x7f0a000f;
-        public static final int etNickname=0x7f0a000b;
-        public static final int etPassword=0x7f0a000c;
-        public static final int etPasswordConfirm=0x7f0a000d;
+        public static final int etEmail=0x7f0a0013;
+        public static final int etNickname=0x7f0a000f;
+        public static final int etPassword=0x7f0a0010;
+        public static final int etPasswordConfirm=0x7f0a0011;
+        public static final int expand=0x7f0a0026;
+        public static final int expandL=0x7f0a0027;
+        public static final int header=0x7f0a0028;
+        public static final int header_subject=0x7f0a002a;
+        public static final int header_user=0x7f0a0029;
+        public static final int imageView=0x7f0a0018;
+        public static final int layout_item_id=0x7f0a0024;
         public static final int list_categories=0x7f0a0009;
-        public static final int list_item=0x7f0a0015;
-        public static final int list_item_child=0x7f0a0013;
-        public static final int list_item_text_child=0x7f0a0014;
-        public static final int list_item_text_view=0x7f0a0016;
+        public static final int list_item=0x7f0a0021;
+        public static final int list_item_child=0x7f0a001f;
+        public static final int list_item_text_child=0x7f0a0020;
+        public static final int list_item_text_view=0x7f0a0022;
+        public static final int list_new_threads=0x7f0a001d;
         public static final int list_newest_posts=0x7f0a0007;
-        public static final int list_view=0x7f0a0017;
+        public static final int list_view=0x7f0a0023;
         public static final int login=0x7f0a0005;
         public static final int login_form=0x7f0a0002;
         public static final int login_status=0x7f0a0000;
         public static final int login_status_message=0x7f0a0001;
+        public static final int main_layout_id=0x7f0a0017;
+        public static final int main_lin_layout=0x7f0a001c;
+        public static final int main_lin_layout1=0x7f0a0019;
+        public static final int main_lin_layout2=0x7f0a001b;
+        public static final int new_thread=0x7f0a001e;
         public static final int password=0x7f0a0004;
+        public static final int post_bottom_bar=0x7f0a000d;
+        public static final int post_content=0x7f0a000c;
+        public static final int post_title=0x7f0a000b;
         public static final int register=0x7f0a000a;
         public static final int sign_in_button=0x7f0a0006;
-        public static final int spCountry=0x7f0a0011;
-        public static final int spGender=0x7f0a0012;
-        public static final int tvRegisterError=0x7f0a000e;
+        public static final int spCountry=0x7f0a0015;
+        public static final int spGender=0x7f0a0016;
+        public static final int tvRegisterError=0x7f0a0012;
+        public static final int value=0x7f0a0025;
+        public static final int view=0x7f0a002c;
     }
     public static final class layout {
         public static final int activity_login=0x7f030000;
         public static final int activity_main=0x7f030001;
-        public static final int activity_register=0x7f030002;
-        public static final int list_item_child=0x7f030003;
-        public static final int list_item_parent=0x7f030004;
-        public static final int list_view=0x7f030005;
+        public static final int activity_post_form=0x7f030002;
+        public static final int activity_register=0x7f030003;
+        public static final int activity_show_posts=0x7f030004;
+        public static final int activity_splash_screen=0x7f030005;
+        public static final int activity_threads=0x7f030006;
+        public static final int list_item_child=0x7f030007;
+        public static final int list_item_parent=0x7f030008;
+        public static final int list_view=0x7f030009;
+        public static final int postpanel=0x7f03000a;
     }
     public static final class menu {
         public static final int login=0x7f090000;
         public static final int main=0x7f090001;
-        public static final int register=0x7f090002;
+        public static final int post_form=0x7f090002;
+        public static final int register=0x7f090003;
+        public static final int show_posts=0x7f090004;
+        public static final int threads=0x7f090005;
     }
     public static final class string {
-        public static final int action_forgot_password=0x7f050022;
-        public static final int action_settings=0x7f050001;
-        public static final int action_sign_in_register=0x7f050020;
-        public static final int action_sign_in_short=0x7f050021;
-        public static final int app_name=0x7f050000;
-        public static final int categories=0x7f050019;
-        public static final int country_language=0x7f050007;
-        public static final int country_language_state=0x7f050008;
-        public static final int country_prompt=0x7f050006;
-        public static final int email=0x7f050004;
-        public static final int err_duplicate_entry=0x7f05000b;
-        public static final int err_invalid_email=0x7f050014;
-        public static final int err_missing_country=0x7f050010;
-        public static final int err_missing_email=0x7f050011;
-        public static final int err_missing_gender=0x7f05000f;
-        public static final int err_missing_nickname=0x7f05000c;
-        public static final int err_missing_password=0x7f05000d;
-        public static final int err_missing_passwordconfirm=0x7f05000e;
-        public static final int err_too_short_passwords=0x7f050012;
-        public static final int err_unequal_passwords=0x7f050013;
-        public static final int error_field_required=0x7f050027;
-        public static final int error_incorrect_password=0x7f050026;
-        public static final int error_invalid_email=0x7f050024;
-        public static final int error_invalid_password=0x7f050025;
-        public static final int gender_prompt=0x7f050005;
-        public static final int login=0x7f05001c;
-        public static final int login_progress_signing_in=0x7f050023;
-        public static final int new_posts=0x7f050018;
-        public static final int nickname=0x7f050003;
-        public static final int ok=0x7f050017;
-        public static final int password=0x7f050009;
-        public static final int passwordconfirm=0x7f05000a;
+        public static final int action_forgot_password=0x7f06002c;
+        public static final int action_settings=0x7f060001;
+        public static final int action_sign_in_register=0x7f06002a;
+        public static final int action_sign_in_short=0x7f06002b;
+        public static final int app_name=0x7f060000;
+        public static final int button_new_thread=0x7f06001f;
+        public static final int button_post=0x7f060021;
+        public static final int categories=0x7f060019;
+        public static final int country_language=0x7f060007;
+        public static final int country_language_state=0x7f060008;
+        public static final int country_prompt=0x7f060006;
+        public static final int dummy_button=0x7f060025;
+        public static final int dummy_content=0x7f060026;
+        public static final int email=0x7f060004;
+        public static final int err_duplicate_entry=0x7f06000b;
+        public static final int err_invalid_email=0x7f060014;
+        public static final int err_missing_country=0x7f060010;
+        public static final int err_missing_email=0x7f060011;
+        public static final int err_missing_gender=0x7f06000f;
+        public static final int err_missing_nickname=0x7f06000c;
+        public static final int err_missing_password=0x7f06000d;
+        public static final int err_missing_passwordconfirm=0x7f06000e;
+        public static final int err_too_short_passwords=0x7f060012;
+        public static final int err_unequal_passwords=0x7f060013;
+        public static final int error_field_required=0x7f060031;
+        public static final int error_incorrect_password=0x7f060030;
+        public static final int error_invalid_email=0x7f06002e;
+        public static final int error_invalid_password=0x7f06002f;
+        public static final int gender_prompt=0x7f060005;
+        public static final int hint_content=0x7f060023;
+        public static final int hint_title=0x7f060022;
+        public static final int login=0x7f06001c;
+        public static final int login_progress_signing_in=0x7f06002d;
+        public static final int new_posts=0x7f060018;
+        public static final int nickname=0x7f060003;
+        public static final int ok=0x7f060017;
+        public static final int password=0x7f060009;
+        public static final int passwordconfirm=0x7f06000a;
         /**  Strings related to login 
          */
-        public static final int prompt_email=0x7f05001e;
-        public static final int prompt_password=0x7f05001f;
-        public static final int register=0x7f05001a;
-        public static final int registration_complete_message=0x7f050016;
-        public static final int registration_complete_title=0x7f050015;
-        public static final int title_activity_login=0x7f05001d;
-        public static final int title_activity_register=0x7f050002;
-        public static final int top_bar=0x7f05001b;
+        public static final int prompt_email=0x7f060028;
+        public static final int prompt_password=0x7f060029;
+        public static final int register=0x7f06001a;
+        public static final int registration_complete_message=0x7f060016;
+        public static final int registration_complete_title=0x7f060015;
+        public static final int title_activity_login=0x7f060027;
+        public static final int title_activity_post_form=0x7f060020;
+        public static final int title_activity_register=0x7f060002;
+        public static final int title_activity_show_posts=0x7f06001d;
+        public static final int title_activity_splash_screen=0x7f060024;
+        public static final int title_activity_threads=0x7f06001e;
+        public static final int top_bar=0x7f06001b;
     }
     public static final class style {
         /** 
@@ -142,6 +239,146 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int ButtonBar=0x7f080005;
+        public static final int ButtonBarButton=0x7f080006;
+        public static final int FullscreenActionBarStyle=0x7f080007;
+        public static final int FullscreenTheme=0x7f080004;
         public static final int LoginFormContainer=0x7f080002;
+        public static final int btnStyleOrange=0x7f080003;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a ButtonBarContainerTheme.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ButtonBarContainerTheme_buttonBarButtonStyle com.example.forum_app:buttonBarButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ButtonBarContainerTheme_buttonBarStyle com.example.forum_app:buttonBarStyle}</code></td><td></td></tr>
+           </table>
+           @see #ButtonBarContainerTheme_buttonBarButtonStyle
+           @see #ButtonBarContainerTheme_buttonBarStyle
+         */
+        public static final int[] ButtonBarContainerTheme = {
+            0x7f010006, 0x7f010007
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.example.forum_app.R.attr#buttonBarButtonStyle}
+          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:buttonBarButtonStyle
+        */
+        public static final int ButtonBarContainerTheme_buttonBarButtonStyle = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.example.forum_app.R.attr#buttonBarStyle}
+          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:buttonBarStyle
+        */
+        public static final int ButtonBarContainerTheme_buttonBarStyle = 0;
+        /** Attributes that can be used with a ExpandablePanel.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ExpandablePanel_animationDuration com.example.forum_app:animationDuration}</code></td><td></td></tr>
+           <tr><td><code>{@link #ExpandablePanel_collapsedHeight com.example.forum_app:collapsedHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #ExpandablePanel_content com.example.forum_app:content}</code></td><td></td></tr>
+           <tr><td><code>{@link #ExpandablePanel_handle com.example.forum_app:handle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ExpandablePanel_isviewgroup com.example.forum_app:isviewgroup}</code></td><td></td></tr>
+           <tr><td><code>{@link #ExpandablePanel_viewgroup com.example.forum_app:viewgroup}</code></td><td></td></tr>
+           </table>
+           @see #ExpandablePanel_animationDuration
+           @see #ExpandablePanel_collapsedHeight
+           @see #ExpandablePanel_content
+           @see #ExpandablePanel_handle
+           @see #ExpandablePanel_isviewgroup
+           @see #ExpandablePanel_viewgroup
+         */
+        public static final int[] ExpandablePanel = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.example.forum_app.R.attr#animationDuration}
+          attribute's value can be found in the {@link #ExpandablePanel} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:animationDuration
+        */
+        public static final int ExpandablePanel_animationDuration = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.example.forum_app.R.attr#collapsedHeight}
+          attribute's value can be found in the {@link #ExpandablePanel} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:collapsedHeight
+        */
+        public static final int ExpandablePanel_collapsedHeight = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.example.forum_app.R.attr#content}
+          attribute's value can be found in the {@link #ExpandablePanel} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:content
+        */
+        public static final int ExpandablePanel_content = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.example.forum_app.R.attr#handle}
+          attribute's value can be found in the {@link #ExpandablePanel} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:handle
+        */
+        public static final int ExpandablePanel_handle = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.example.forum_app.R.attr#isviewgroup}
+          attribute's value can be found in the {@link #ExpandablePanel} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:isviewgroup
+        */
+        public static final int ExpandablePanel_isviewgroup = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.example.forum_app.R.attr#viewgroup}
+          attribute's value can be found in the {@link #ExpandablePanel} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:viewgroup
+        */
+        public static final int ExpandablePanel_viewgroup = 2;
+    };
 }

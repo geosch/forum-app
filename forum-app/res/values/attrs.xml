@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <declare-styleable name="ExpandablePanel">
         <attr name="handle" format="reference" />
         <attr name="content" format="reference" />
-        <attr name="viewgroup" format="reference"/>
-        <attr name="isviewgroup" format="boolean"/>
-        <attr name="collapsedHeight" format="dimension"/>
-        <attr name="animationDuration" format="integer"/>
+        <attr name="viewgroup" format="reference" />
+        <attr name="isviewgroup" format="boolean" />
+        <attr name="collapsedHeight" format="dimension" />
+        <attr name="animationDuration" format="integer" />
     </declare-styleable>
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="buttonBarStyle" format="reference" />
+        <attr name="buttonBarButtonStyle" format="reference" />
+    </declare-styleable>
+
 </resources>

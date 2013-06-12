@@ -28,25 +28,29 @@
         android:layout_height="fill_parent"
         android:hint="@string/hint_content"
         android:gravity="top"
+        android:paddingBottom="10dp"
         android:inputType="textMultiLine"
         android:textSize="18sp" />
     
   </LinearLayout>
   
-  <LinearLayout 
+  <LinearLayout
+           android:id="@+id/post_bottom_bar"
            android:layout_width="match_parent"
-           android:layout_height="50dp"
+           android:layout_height="wrap_content"
            android:layout_alignParentBottom="true"
            android:background="@android:drawable/bottom_bar"
            android:gravity="center">
 
        <Button
            android:id="@+id/button_post"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:gravity="center_vertical"
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:gravity="center"
+           android:layout_weight="1"
            android:text="@string/button_post"
-           android:textColor="#000000"   />
+           android:background="@color/blue"
+           android:textColor="@color/white"/>
   </LinearLayout>
        
        
