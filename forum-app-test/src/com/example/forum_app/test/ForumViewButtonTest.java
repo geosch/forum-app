@@ -49,7 +49,7 @@ public class ForumViewButtonTest extends ActivityInstrumentationTestCase2<MainAc
     
     public void testRegisterButton() throws Throwable {
 		solo.waitForActivity("MainActivity");
-		solo.clickOnButton("Register");
+		solo.clickOnButton("Sign up");
 		solo.waitForActivity("RegisterActivity");
 		Assert.assertNotNull(solo.getCurrentActivity());
 		Assert.assertEquals(RegisterActivity.class, solo.getCurrentActivity().getClass());    

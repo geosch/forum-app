@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +47,10 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 	
 	private View.OnClickListener logoutlistener;
 	private View.OnClickListener loginlistener;
+
+	private TextView clicked_category;
+
+	private TextView clicked_newest_post;
 	
 	
 	/** Getter **/
@@ -63,10 +69,8 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Resources res = getResources();
-
-
 		
-		
+		this.setTitle("Catrobat Forum");
 		
 		/* ******************************************* *
 		 * The expandable list for the newest posts: 
@@ -237,7 +241,10 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
     }
     
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	
+    	  if(clicked_category != null)
+    	  {
+    		  clicked_category.setBackgroundColor(Color.WHITE);
+    	  }
     	  if (requestCode == REGISTER_ACTIVITY || requestCode == LOGIN_ACTIVITY) {
     		  user = User.getInstance();
     	      if(resultCode == RESULT_OK && user != null){    
@@ -255,6 +262,19 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
     	  }
     	}//onActivityResult
 
+    @Override
+	protected void onResume() {
+		super.onResume();
+		if(clicked_category != null)
+  	    {
+  		  clicked_category.setBackgroundColor(Color.WHITE);
+  	    }
+		if(clicked_newest_post != null)
+  	    {
+			clicked_newest_post.setBackgroundColor(Color.WHITE);
+  	    }
+	}
+    
     /**
     * onChildClick(ExpandableListView, View, int, int, long)
     * This is the OnClickListener for the Newest Posts List
@@ -263,6 +283,9 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 	public boolean onChildClick(ExpandableListView parent, View v,
 			int groupPosition, int childPosition, long id) {
 		
+		LinearLayout ll = (LinearLayout)v;
+		this.clicked_newest_post = (TextView)ll.getChildAt(0);
+		clicked_newest_post.setBackgroundColor(Color.LTGRAY);
 		String subject = new String();
 		Integer threadid = -1;
 		try {
@@ -284,29 +307,31 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 		
 		return false; // set to true (95% sure ;-) )
 	}
-	
-	
-    /**
+    
+	/**
     * onItemClick(AdapterView<?>, View, int, long)
     * This is the OnClickListener for the Categories List
     */
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		
-		TextView category = (TextView) arg1;
+		clicked_category = (TextView) arg1;
+		clicked_category.setBackgroundColor(Color.LTGRAY);
 		Category selectedCategory = (Category) arg0.getAdapter().getItem(arg2);
-
+        
 		final Intent threads_intent = new Intent(this, ThreadsActivity.class);
-		threads_intent.putExtra("categoryID", category.getText());
+		threads_intent.putExtra("categoryID", clicked_category.getText());
 		if (selectedCategory == null)
 			Log.d("MainActivity", "selectedCategoty null");
 		threads_intent.putExtra("category", selectedCategory);
 		startActivity(threads_intent);
-		Log.d("MainActivity", "Categories OnChildClickListener Fired with " + category.getText());
+		Log.d("MainActivity", "Categories OnChildClickListener Fired with " + clicked_category.getText());
 	}
 	
 	private void changeLoginToLogout() {
 		if(user != null)
 			login.setOnClickListener(logoutlistener);
 	}
+	
+	
 }

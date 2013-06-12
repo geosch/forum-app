@@ -3,8 +3,8 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/list_item_child"
         android:gravity="center_vertical"
         android:clickable="false" 
@@ -12,12 +12,13 @@
  
  
   <TextView 
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/list_item_text_child"
     android:padding="10dp"
     android:textSize="14sp"
     android:textColor="#000000"
+    android:background="@color/white"
    	android:textIsSelectable="false"
     android:layout_marginLeft="5dp"
     android:clickable="false"
