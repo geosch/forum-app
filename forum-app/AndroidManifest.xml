@@ -15,7 +15,7 @@
         android:allowBackup="true"
         android:debuggable="true"
         android:theme="@style/AppTheme"
-        android:icon="@drawable/catroid"
+        android:icon="@drawable/forumapp_icon_2"
         android:label="@string/app_name">
         <activity
             android:name="com.example.forum_app.MainActivity"
@@ -51,8 +51,9 @@
         <activity
             android:name="com.example.forum_app.SplashScreen"
             android:screenOrientation="portrait"
-            android:label="@string/title_splash_screen"
+            android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
