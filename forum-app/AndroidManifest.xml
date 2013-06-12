@@ -19,6 +19,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.forum_app.MainActivity"
+            android:screenOrientation="portrait"
             android:label="@string/top_bar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,23 +29,28 @@
         </activity>
         <activity
             android:name="com.example.forum_app.RegisterActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_register" >
         </activity>
         <activity
             android:name="com.example.forum_app.LoginActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
         <activity
             android:name="com.example.forum_app.ShowPostsActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_show_posts" >
         </activity>
 		<activity
             android:name="com.example.forum_app.ThreadsActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_threads" >
         </activity>
         <activity
             android:name="com.example.forum_app.PostFormActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_post_form" >
         </activity>
     </application>
