@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -40,6 +42,8 @@ public class RegisterActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
+		
+		this.setTitle(R.string.register);
 		
 		//this.btRegister = (Button) this.findViewById(com.example.forum_app.R.id.btRegister);
 		this.tvRegisterError = (TextView) this.findViewById(com.example.forum_app.R.id.tvRegisterError);
@@ -82,6 +86,10 @@ public class RegisterActivity extends Activity {
 	}
 	
 	public void clickRegister(View view) {
+		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        if(etNickname != null)
+            imm.hideSoftInputFromWindow(etNickname.getWindowToken(), 0);  
+        
 		this.tvRegisterError.setText("");
 		if(this.etNickname.getText().toString().trim().isEmpty())
 		{
