@@ -23,8 +23,11 @@ public class DBOperator {
 	private List<JSONObject> json;
 	
 	private DBOperator() {
-		url = "http://forumapp.heliohost.org/DBConnectionService.php";
-		jsonParser = new JSONParser();
+        // heliohost
+        url = "http://forumapp.heliohost.org/DBConnectionService.php";
+        // bplaced
+        // url = "http://kaefmuellerforum.bplaced.net/DBConnectionService.php";
+ 		jsonParser = new JSONParser();
 	}
 	
 	public static DBOperator getInstance() {

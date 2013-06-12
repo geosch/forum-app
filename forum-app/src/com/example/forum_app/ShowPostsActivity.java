@@ -29,6 +29,8 @@ public class ShowPostsActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_posts);
 		
+		this.setTitle(R.string.post_title);
+		
 		ForumThread thread = (ForumThread) this.getIntent().getSerializableExtra("thread");
 		
 		this.threadid = thread.getId();

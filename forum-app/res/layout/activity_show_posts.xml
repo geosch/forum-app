@@ -6,7 +6,8 @@
 
 <ScrollView 
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:paddingBottom="50sp" >
     <LinearLayout 
         
     android:orientation="vertical"
@@ -18,17 +19,19 @@
 <LinearLayout 
          android:id="@+id/new_post_layout"
          android:layout_width="match_parent"
-         android:layout_height="wrap_content"
+         android:layout_height="50sp"
+         android:background="@color/blue"
          android:layout_alignParentBottom="true"
-         android:background="@android:drawable/bottom_bar"
          android:gravity="center">
      <Button
          android:id="@+id/new_post_button"
          android:layout_width="0dp"
          android:layout_height="wrap_content"
+         android:background="@null"
+         android:textColor="@color/white"
+         android:textSize="22sp"
          android:gravity="center"
          android:layout_weight="1"
-         android:background="@null"
          android:text="@string/button_new_post" />
 </LinearLayout> 
 

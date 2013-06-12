@@ -32,6 +32,7 @@
     <string name="registration_complete_title">Registration complete</string>
     <string name="registration_complete_message">Contragulation! Your registration was successful.</string>
     <string name="ok">OK</string>
+    <string name="post_title">Posts</string>
     <string name="new_posts">Newest Posts</string>
     <string name="categories">Categories</string>
     <string name="register">Sign up</string>

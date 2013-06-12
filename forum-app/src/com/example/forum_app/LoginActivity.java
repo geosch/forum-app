@@ -77,6 +77,7 @@ public class LoginActivity extends Activity {
 		Intent returnIntent = new Intent();
 		setResult(RESULT_OK, returnIntent);        
 		
+		this.setTitle(R.string.login);
 
 		// Set up the login form.
 		lActivity = this;

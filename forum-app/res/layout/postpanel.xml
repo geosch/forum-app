@@ -20,15 +20,18 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/orange"
+            android:paddingBottom="4sp"
+            android:paddingTop="4sp"
             android:weightSum="100" >
 			
 			<TextView
             android:id="@+id/header_user"
             android:text=""
             android:layout_height="wrap_content"
-            android:maxHeight="50dip" 
-            android:textColor="@color/red"
+            android:textColor="@color/blue"
             android:layout_gravity="left"
+            android:textSize="18sp"
             android:layout_width="0dp"
             android:layout_weight="20"/>
 			
@@ -36,7 +39,8 @@
             android:id="@+id/header_subject"
             android:text=""
             android:layout_height="wrap_content"
-            android:maxHeight="50dip" 
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:layout_gravity="center"
             android:layout_width="0dp"
             android:layout_weight="80"/>

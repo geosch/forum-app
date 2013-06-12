@@ -43,6 +43,8 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_threads);
 		
+		this.setTitle(R.string.categories);
+		
 	    category = (Category) this.getIntent().getSerializableExtra("category");
 		
 	    header = (TextView) findViewById(R.id.category_header);
