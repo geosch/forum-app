@@ -39,19 +39,18 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_alignParentBottom="true"
-           android:background="@color/blue"
+           android:background="@android:drawable/bottom_bar"
            android:gravity="center">
 
        <Button
-           android:id="@+id/button_post"
-           android:layout_width="0dp"
-           android:layout_height="match_parent"
-           android:gravity="center"
-           android:layout_weight="1"
-           android:text="@string/button_post"
-           android:background="@color/blue"
-           android:textColor="@color/white"
-           android:textSize="22sp"/>
+         android:id="@+id/button_post"
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:background="@color/blue"
+         android:textColor="@color/white"
+         android:textSize="20sp"
+         android:text="@string/button_post"/>
   </LinearLayout>
        
        
