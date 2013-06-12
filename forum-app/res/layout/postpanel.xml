@@ -40,8 +40,18 @@
             android:layout_gravity="center"
             android:layout_width="0dp"
             android:layout_weight="80"/>
-            
-			<Button
+
+            <Button
+                android:id="@+id/edit"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical|right"
+                android:background="@drawable/edit_post"
+                android:onClick="editPost" />
+
+
+			<!--<Button
             android:id="@+id/edit"
             android:layout_width="20dp"
             android:layout_height="20dp"
@@ -49,7 +59,7 @@
             android:text="edit"
             android:textSize="5dp"
             android:background="@color/red"
-            android:onClick="editPost" />
+            android:onClick="editPost" /> -->
 			
         </LinearLayout>
 		
