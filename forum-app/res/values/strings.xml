@@ -19,8 +19,6 @@
         <item>female</item>
     </string-array>
 
-    <color name="red">#FF0000</color>
-
     <string name="err_missing_nickname">Please enter Nickname</string>
     <string name="err_missing_password">Please enter Password</string>
     <string name="err_missing_passwordconfirm">Please enter Password</string>
