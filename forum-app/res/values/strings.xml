@@ -42,8 +42,9 @@
     <string name="title_activity_threads">ThreadsActivity</string>
     <string name="button_new_thread">New Thread</string>
     <string name="title_activity_post_form">PostFormActivity</string>
-    <string name="button_post">Post</string>
+    <string name="button_post">Post Thread</string>
     <string name="hint_title">Enter a title</string>
     <string name="hint_content">Enter your post</string>
+    <string name="button_new_post">Answer</string>
 
 </resources>

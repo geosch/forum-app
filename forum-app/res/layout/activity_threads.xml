@@ -45,11 +45,7 @@
     
     
   </LinearLayout>
-    
-    
-    
-    
-    
+   
   <LinearLayout 
            android:id="@+id/main_lin_layout2"
            android:layout_width="match_parent"

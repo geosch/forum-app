@@ -20,10 +20,15 @@ public class PostFormTest extends ActivityInstrumentationTestCase2<MainActivity>
 	private LoginActivity login_activity;
 	private MainActivity main_activity;
 	private PostFormActivity post_form_activity;
-	
+	int id;
 	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	static Random rnd = new Random();
 
+	String content = "DIES IST EIN TEST CONTENT!";;
+	String content_edit = " - EDIT";
+	String subject = "Test Subject";
+	String subject_edit = "Test Subject Edit";
+	
 	String randomString( int len ) 
 	{
 	   StringBuilder sb = new StringBuilder( len );
@@ -48,6 +53,22 @@ public class PostFormTest extends ActivityInstrumentationTestCase2<MainActivity>
     protected void tearDown() {
     	//mActivity.finish();
     	solo.finishOpenedActivities();
+  
+	    String statement = "DELETE FROM post WHERE content='";
+	    statement += content + "'";
+	    DBOperator.getInstance().sendDelete(statement);
+	    
+	    statement = "DELETE FROM post WHERE content='";
+	    statement += content + content_edit + "'";
+	    DBOperator.getInstance().sendDelete(statement);
+	    
+	    statement = "DELETE FROM thread WHERE subject='";
+	    statement += subject + "'";
+	    DBOperator.getInstance().sendDelete(statement);
+	    
+	    statement = "DELETE FROM thread WHERE subject='";
+	    statement += subject_edit + "'";
+	    DBOperator.getInstance().sendDelete(statement);
     }
     
     /**
@@ -55,7 +76,122 @@ public class PostFormTest extends ActivityInstrumentationTestCase2<MainActivity>
      * Logs in and attempts to make a thread
      * @throws Throwable
      */
-	public void testPostForm() throws Throwable {
+	public void testPostThread() throws Throwable {
+		
+		solo.waitForActivity("MainActivity");
+	    solo.clickOnButton("Login");
+	    solo.waitForActivity("LoginActivity");
+	    
+	    this.login_activity = (LoginActivity) solo.getCurrentActivity();
+	    
+	    this.email = (EditText) this.login_activity.findViewById(com.example.forum_app.R.id.email);
+	    this.password = (EditText) this.login_activity.findViewById(com.example.forum_app.R.id.password);
+	    
+	    solo.enterText(email, "tester@gmx.at");
+	    solo.enterText(password, "12345678");
+		
+		solo.clickOnButton("Login");
+		
+		solo.waitForActivity("MainActivity");
+		
+		this.main_activity = (MainActivity) solo.getCurrentActivity();
+		
+		String name = main_activity.getCategoriesObj().get(0).getName();
+		
+		solo.clickOnText(name);
+		
+		solo.waitForActivity("ThreadsActivity");
+		
+		solo.clickOnButton("New Thread");
+		
+		solo.waitForActivity("PostFormActivity");
+		
+		this.post_form_activity = (PostFormActivity) solo.getCurrentActivity();
+		
+		this.edit_title = (EditText) this.post_form_activity.findViewById(com.example.forum_app.R.id.post_title);
+	    this.edit_content = (EditText) this.post_form_activity.findViewById(com.example.forum_app.R.id.post_content);
+		    
+	    solo.enterText(edit_title, subject);
+	    
+	    solo.enterText(edit_content, content);
+	    
+	    solo.clickOnButton("Post");
+	    
+	    solo.waitForActivity("ThreadsActivity");
+	   
+	    TextView test = solo.getText(subject);
+	    
+	    assertEquals(subject, test.getText().toString());
+	    
+	    Log.d("PostTest", "PostTest finished " + subject + " " +test.getText().toString());
+	    String statement = "DELETE FROM post WHERE content='";
+	    statement += content + "'";
+	    DBOperator.getInstance().sendDelete(statement);
+
+	}
+	
+	/**
+     * testPostAnswer
+     * Logs in and attempts to make an answer
+     * @throws Throwable
+     */
+	public void testPostAnswer() throws Throwable {
+		
+		solo.waitForActivity("MainActivity");
+	    solo.clickOnButton("Login");
+	    solo.waitForActivity("LoginActivity");
+	    
+	    this.login_activity = (LoginActivity) solo.getCurrentActivity();
+	    
+	    this.email = (EditText) this.login_activity.findViewById(com.example.forum_app.R.id.email);
+	    this.password = (EditText) this.login_activity.findViewById(com.example.forum_app.R.id.password);
+	    
+	    solo.enterText(email, "tester@gmx.at");
+	    solo.enterText(password, "12345678");
+		
+		solo.clickOnButton("Login");
+		
+		solo.waitForActivity("MainActivity");
+		
+		this.main_activity = (MainActivity) solo.getCurrentActivity();
+		
+		String name = main_activity.getCategoriesObj().get(0).getName();
+		
+		solo.clickOnText(name);
+		
+		solo.waitForActivity("ThreadsActivity");
+		
+		solo.clickInList(1);
+		
+		solo.waitForActivity("ShowPostsActivity");
+		
+		solo.clickOnButton("Answer");
+		
+		solo.waitForActivity("PostFormActivity");
+		
+		this.post_form_activity = (PostFormActivity) solo.getCurrentActivity();
+		
+	    this.edit_content = (EditText) this.post_form_activity.findViewById(com.example.forum_app.R.id.post_content);
+	    
+	    solo.enterText(edit_content, content);
+	    
+	    solo.clickOnButton("Post Answer");
+	    
+	    solo.waitForActivity("ShowPostsActivity");
+	   
+	    TextView test = solo.getText(content);
+	    
+	    assertEquals(content, test.getText().toString());
+	    
+	    Log.d("PostTest", "PostAnswer finished " + content + " " +test.getText().toString());
+	}
+	
+	/**
+     * testPostAnswer
+     * Logs in and attempts to make an answer
+     * @throws Throwable
+     */
+	public void testPostEdit() throws Throwable {
 		
 		solo.waitForActivity("MainActivity");
 	    solo.clickOnButton("Login");
@@ -90,34 +226,38 @@ public class PostFormTest extends ActivityInstrumentationTestCase2<MainActivity>
 		this.edit_title = (EditText) this.post_form_activity.findViewById(com.example.forum_app.R.id.post_title);
 	    this.edit_content = (EditText) this.post_form_activity.findViewById(com.example.forum_app.R.id.post_content);
 	
-	    String subject = "TESTTEST";
 	    
-	    solo.enterText(edit_title, subject);
-	    String content = "DIES IST EIN TEST!";
+	    solo.enterText(edit_title, subject_edit);
 	    solo.enterText(edit_content, content);
 	    
 	    solo.clickOnButton("Post");
 	    
 	    solo.waitForActivity("ThreadsActivity");
-	    
-	    
-	    
-	    TextView test = solo.getText(subject);
-	    
-	    assertEquals(subject, test.getText().toString());
-	    
-	    Log.d("PostTest", "PostTest finished " + subject + " " +test.getText().toString());
 
+	    solo.clickOnText(subject);
+	    
+	    solo.waitForActivity("ShowPostsActivity");
 	    
 	    
+	    solo.clickOnButton(0);    
 	    
-	    String statement = "DELETE FROM post WHERE content='";
-	    statement += content + "'";
-	    DBOperator.getInstance().sendDelete(statement);
+		solo.waitForActivity("PostFormActivity");
+			
+		this.post_form_activity = (PostFormActivity) solo.getCurrentActivity();
+		
+	    this.edit_content = (EditText) this.post_form_activity.findViewById(com.example.forum_app.R.id.post_content);
+	    
+	    
+	    solo.enterText(edit_content, content_edit);
+	    
+	    solo.clickOnButton("Save Changes");
+	    
+	    solo.waitForActivity("ShowPostsActivity");
+	   
+	    TextView test = solo.getText(content + content_edit);
+	    
+	    assertEquals(content + content_edit, test.getText().toString());
+	    
 
-	    
-	    statement = "DELETE FROM thread WHERE subject='";
-	    statement += subject + "'";
-	    DBOperator.getInstance().sendDelete(statement);
 	}
 }

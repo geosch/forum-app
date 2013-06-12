@@ -102,6 +102,7 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 				{   
 					post_form_intent.putExtra("categoryID", category.getId());
 					post_form_intent.putExtra("threadID", -1);
+					post_form_intent.putExtra("postID", -1);
 
 					startActivityForResult(post_form_intent, 1);
 			
