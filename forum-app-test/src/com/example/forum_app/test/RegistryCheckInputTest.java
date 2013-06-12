@@ -1,10 +1,6 @@
 package com.example.forum_app.test;
  
 
-import java.util.List;
-
-import org.json.JSONObject;
-
 import com.example.forum_app.*;
 //import org.junit.Test;
 import junit.framework.Assert;

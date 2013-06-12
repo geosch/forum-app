@@ -1,21 +1,13 @@
 package com.example.forum_app;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
-
-import org.json.JSONException;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -35,13 +27,6 @@ import android.widget.TextView;
  */
 public class LoginActivity extends Activity {
 	/**
-	 * A dummy authentication store containing known user names and passwords.
-	 * TODO: remove after connecting to a real authentication system.
-	 */
-	private static final String[] DUMMY_CREDENTIALS = new String[] {
-			"foo@example.com:hello", "bar@example.com:world" };
-
-	/**
 	 * The default email to populate the email field with.
 	 */
 	public static final String EXTRA_EMAIL = "com.example.android.authenticatordemo.extra.EMAIL";
@@ -57,18 +42,12 @@ public class LoginActivity extends Activity {
 	private List<JSONObject> json;
 	private DBOperator db = DBOperator.getInstance();
 	private String query;
-	private JSONParser jsonParser;
-	private String url;
-	private ArrayList<NameValuePair> param;
-
 	// UI references.
 	private EditText mEmailView;
 	private EditText mPasswordView;
 	private View mLoginFormView;
 	private View mLoginStatusView;
 	private TextView mLoginStatusMessageView;
-	private LoginActivity lActivity;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -79,8 +58,6 @@ public class LoginActivity extends Activity {
 		
 		this.setTitle(R.string.login);
 
-		// Set up the login form.
-		lActivity = this;
 		mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
 		mEmailView = (EditText) findViewById(R.id.email);
 		mEmailView.setText(mEmail);

@@ -1,25 +1,11 @@
 package com.example.forum_app.test;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import junit.framework.Assert;
 
 import org.json.JSONObject;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.UiThreadTest;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
-
-import com.example.forum_app.DBOperator;
-import com.example.forum_app.LoginActivity;
 import com.example.forum_app.MainActivity;
 import com.example.forum_app.ThreadsActivity;
 import com.jayway.android.robotium.solo.Solo;

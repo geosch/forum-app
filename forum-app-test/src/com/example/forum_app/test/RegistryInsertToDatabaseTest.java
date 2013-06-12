@@ -59,8 +59,6 @@ public class RegistryInsertToDatabaseTest extends ActivityInstrumentationTestCas
 	public void testASucessfullRegistration() throws Throwable {
 		this.ractivity.runOnUiThread(new Runnable() {
 			public void run() {
-				Resources res = ractivity.getResources();
-
 				etNickname.setText("TestuserRegistration");
 				etPassword.setText("Horst123");
 				etPasswordConfirm.setText("Horst123");
@@ -99,8 +97,6 @@ public class RegistryInsertToDatabaseTest extends ActivityInstrumentationTestCas
 	public void testCDuplicateEmail() throws Throwable {
 		this.ractivity.runOnUiThread(new Runnable() {
 			public void run() {
-				Resources res = ractivity.getResources();
-
 				etNickname.setText("TestuserRegistration222");
 				etPassword.setText("Horst123");
 				etPasswordConfirm.setText("Horst123");
@@ -119,8 +115,6 @@ public class RegistryInsertToDatabaseTest extends ActivityInstrumentationTestCas
 	public void testDReset() throws Throwable {
 		this.ractivity.runOnUiThread(new Runnable() {
 			public void run() {
-				Resources res = ractivity.getResources();
-
 				DBOperator dboperator = DBOperator.getInstance();
 				List<JSONObject> answer = dboperator.sendDelete("DELETE FROM ForumUser WHERE NickName = 'TestuserRegistration';");
 				Log.d("Deb: ", answer.toString());

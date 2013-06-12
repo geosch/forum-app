@@ -57,9 +57,7 @@ public class ExpandablePanel extends LinearLayout {
             throw new IllegalArgumentException("The content attribute is required and must refer to a valid child.");
         }
 
-        int isViewGroupId = a.getResourceId(R.styleable.ExpandablePanel_isviewgroup, 0);
         int viewGroupId = a.getResourceId(R.styleable.ExpandablePanel_viewgroup, 0);
-//        isViewGroup = findViewById(isViewGroupId);
         isViewGroup = a.getBoolean(R.styleable.ExpandablePanel_isviewgroup, false);
         if (isViewGroup) {
             mViewGroupId = viewGroupId;

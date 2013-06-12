@@ -78,7 +78,6 @@ public class JSONParser {
  
         try {
             BufferedReader reader = new BufferedReader(is);
-            StringBuilder sb = new StringBuilder();
             String line = null;
             
             this.queryResult = new ArrayList<JSONObject>();

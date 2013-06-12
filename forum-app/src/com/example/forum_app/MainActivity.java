@@ -36,7 +36,6 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 	private ListView list_categories;
 	private Button login;
 	private Button register;
-	private int userid = 0;
 	private static User user;
 	private static final int REGISTER_ACTIVITY = 1;
 	private static final int LOGIN_ACTIVITY = 2;
@@ -187,7 +186,7 @@ public class MainActivity extends Activity implements OnChildClickListener, OnIt
 			
 			@Override
 			public void onClick(View v) {
-				user.destroyInstance();
+				User.destroyInstance();
 				login.setText(R.string.login);
 				login.setOnClickListener(loginlistener);
 				register.setVisibility(View.VISIBLE);

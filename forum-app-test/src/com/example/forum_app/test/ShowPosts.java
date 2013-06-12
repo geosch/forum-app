@@ -1,58 +1,33 @@
 package com.example.forum_app.test;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import junit.framework.Assert;
 
 import com.example.forum_app.*;
-import com.example.forum_app.R;
-
 import org.json.JSONObject;
-import org.junit.Test;
 import com.jayway.android.robotium.solo.Solo;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.UiThreadTest;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.LinearLayout;
 
 public class ShowPosts extends ActivityInstrumentationTestCase2<MainActivity>{
 	
 	private ShowPostsActivity spactivity;
-	private Button btRegister;
-	private EditText etNickname;
-	private EditText etPassword;
-	private EditText etPasswordConfirm;
-	private Spinner spCountry;
-	private EditText etEmail;
-	private Spinner spGender;
-	private TextView tvRegisterError; 
-	
-	private Resources res;
-	
 	private Solo solo;
 	private EditText email;
 	private EditText password;
 	private LoginActivity lactivity;
 	
-	private MainActivity mactivity;
 	private Integer userid;
 	private Integer categoryid;
 	private Integer threadid;
 	private Integer postid;
 	
-	@SuppressWarnings("deprecation")
 	public ShowPosts() {
 		super(MainActivity.class);
 	}
@@ -187,7 +162,7 @@ public class ShowPosts extends ActivityInstrumentationTestCase2<MainActivity>{
                 this.userid + ", " +
 	              "'TestPostContent', " + 
 	              "'1950-09-28 01:00');");
-		mactivity = getActivity();
+		getActivity();
     	//solo = new Solo(getInstrumentation(), mactivity);
     	solo = new Solo(getInstrumentation(), getActivity());
 	} // end of setUp() method definition

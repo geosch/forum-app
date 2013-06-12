@@ -8,8 +8,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 public class DBOperator {
  
 	private static String url;

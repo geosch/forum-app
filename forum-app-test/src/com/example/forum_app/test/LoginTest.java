@@ -1,20 +1,9 @@
 package com.example.forum_app.test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
 import com.example.forum_app.*;
-import com.example.forum_app.R;
 import com.jayway.android.robotium.solo.Solo;
 
-import android.app.Activity;
-import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
-import android.util.Log;
-import android.widget.Button;
 import android.widget.EditText;
 import junit.framework.Assert;
 

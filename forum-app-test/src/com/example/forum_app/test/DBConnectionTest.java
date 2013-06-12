@@ -1,30 +1,21 @@
 package com.example.forum_app.test;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONTokener;
 import com.example.forum_app.*;
 
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
-import android.util.JsonWriter;
 import android.util.Log;
 import junit.framework.Assert;
 
 public class DBConnectionTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
-	private MainActivity mActivity;
-	
-    @SuppressWarnings("deprecation")
+	@SuppressWarnings("deprecation")
 	public DBConnectionTest() {
 		super("com.example.forum-app.",MainActivity.class);
 		// TODO Auto-generated constructor stub
@@ -33,7 +24,7 @@ public class DBConnectionTest extends ActivityInstrumentationTestCase2<MainActiv
     @Override
     protected void setUp() throws Exception{
     	super.setUp();
-    	mActivity = this.getActivity();
+    	this.getActivity();
     }
     
     /**
