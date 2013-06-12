@@ -3,6 +3,7 @@ package com.example.forum_app;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.graphics.Color;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,6 +31,7 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 	private Button button_new_thread;
 	private List<JSONObject> json_new_threads;
 	private Category category;
+    private View clickedThread;
 	
 	
 	/** Getter **/
@@ -102,6 +104,7 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 				{   
 					post_form_intent.putExtra("categoryID", category.getId());
 					post_form_intent.putExtra("threadID", -1);
+					post_form_intent.putExtra("postID", -1);
 
 					startActivityForResult(post_form_intent, 1);
 			
@@ -136,7 +139,8 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		
+		clickedThread = arg1;
+        arg1.setBackgroundColor(Color.LTGRAY);
 		ForumThread selected_thread = (ForumThread) arg0.getAdapter().getItem(arg2);
 		
 		final Intent post_intent = new Intent(this, ShowPostsActivity.class);
@@ -155,4 +159,13 @@ public class ThreadsActivity extends Activity implements OnItemClickListener{
 		finish();
 		startActivity(getIntent());
 	}
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        if (clickedThread != null)
+          clickedThread.setBackgroundResource(R.color.white);
+    }
 }
+
+

@@ -1,32 +1,18 @@
 package com.example.forum_app;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Vector;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.R.drawable;
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
+import android.content.Intent;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ExpandableListView.OnChildClickListener;
 
 public class ShowPostsActivity extends Activity
 {	
@@ -146,7 +132,32 @@ public class ShowPostsActivity extends Activity
 			     	ex_post_panel.setCollapsedHeight(20);
 		     }
 		     });
+		
 		}
+
+		Button button_new_post = (Button) findViewById(R.id.new_post_button);	
+		LinearLayout button_parent = (LinearLayout) button_new_post.getParent();
+		if(User.getInstance() == null)
+		{
+			button_parent.setVisibility(View.GONE);
+		}
+		else
+		{
+			button_parent.setVisibility(View.VISIBLE);
+			final Intent post_form_intent = new Intent(this, PostFormActivity.class);
+			button_new_post.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) 
+				{   
+					Log.d("ShowPosts", "New Post onClick fired");
+					post_form_intent.putExtra("categoryID", -1);
+					post_form_intent.putExtra("threadID", threadid);
+					post_form_intent.putExtra("postID", -1);
+
+					startActivityForResult(post_form_intent, 1);
+				}
+			});
+		}
+		
 	}
 	
 	public void setThreadId(Integer threadid)
@@ -163,9 +174,21 @@ public class ShowPostsActivity extends Activity
 		Button edit = (Button)view;
 		Integer postid = edit.getId() - POST_ID_INC_VALUE;
 		Log.d("ShowPosts", "postid: " + postid.toString());
-		// TODO Call Intent to create/edit Post Avtivity. 
-		// PostID = postid
+		
+		final Intent post_form_intent = new Intent(this, PostFormActivity.class);
+		
+		post_form_intent.putExtra("categoryID", -1);
+		post_form_intent.putExtra("threadID", -1);
+		post_form_intent.putExtra("postID", postid);
+
+		startActivityForResult(post_form_intent, 1);
+
+		Log.d("ShowPosts", "New Post OnClickListener Fired");
 	}
 
-
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		Log.d("ShowPosts", "onActivityResult started");	
+		finish();
+		startActivity(getIntent());
+	}
 }

@@ -19,11 +19,7 @@
         <item>female</item>
     </string-array>
 
-    <color name="red">#FF0000</color>
-	<color name="blue">#326A9F</color>
-	<color name="orange">#F88017</color>
-	<color name="white">#FFFFFF</color>
-    
+
     <string name="err_missing_nickname">Please enter Nickname</string>
     <string name="err_missing_password">Please enter Password</string>
     <string name="err_missing_passwordconfirm">Please enter Password</string>
@@ -42,11 +38,16 @@
     <string name="top_bar">Catroid Forum</string>
     <string name="login">Login</string>
     <string name="title_activity_show_posts">ShowPosts</string>
+    <string name ="title_splash_screen">splash screen</string>
     <string name="title_activity_threads">ThreadsActivity</string>
     <string name="button_new_thread">New Thread</string>
     <string name="title_activity_post_form">PostFormActivity</string>
-    <string name="button_post">Post</string>
+    <string name="button_post">Post Thread</string>
     <string name="hint_title">Enter a title</string>
     <string name="hint_content">Enter your post</string>
+    <string name="button_new_post">Answer</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>
