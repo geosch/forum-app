@@ -45,12 +45,9 @@
     <string name="button_post">Post Thread</string>
     <string name="hint_title">Enter a title</string>
     <string name="hint_content">Enter your post</string>
-<<<<<<< HEAD
     <string name="button_new_post">Answer</string>
-=======
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
->>>>>>> master
 
 </resources>

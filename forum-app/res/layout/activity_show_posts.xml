@@ -23,7 +23,7 @@
          android:background="@android:drawable/bottom_bar"
          android:gravity="center">
      <Button
-         android:id="@+id/new_post"
+         android:id="@+id/new_post_button"
          android:layout_width="0dp"
          android:layout_height="wrap_content"
          android:gravity="center"

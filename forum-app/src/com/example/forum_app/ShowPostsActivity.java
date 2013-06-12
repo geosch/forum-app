@@ -135,7 +135,7 @@ public class ShowPostsActivity extends Activity
 		
 		}
 
-		Button button_new_post = (Button) findViewById(R.id.new_post);	
+		Button button_new_post = (Button) findViewById(R.id.new_post_button);	
 		LinearLayout button_parent = (LinearLayout) button_new_post.getParent();
 		if(User.getInstance() == null)
 		{
