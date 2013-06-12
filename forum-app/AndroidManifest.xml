@@ -20,11 +20,6 @@
         <activity
             android:name="com.example.forum_app.MainActivity"
             android:label="@string/top_bar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.example.forum_app.RegisterActivity"
@@ -42,10 +37,19 @@
 		<activity
             android:name="com.example.forum_app.ThreadsActivity"
             android:label="@string/title_activity_threads" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.example.forum_app.PostFormActivity"
             android:label="@string/title_activity_post_form" >
+        </activity>
+        <activity
+            android:name="com.example.forum_app.SplashScreen"
+            android:label="@string/title_splash_screen" >
         </activity>
     </application>
 
